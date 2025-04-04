@@ -1,4 +1,4 @@
-name: FromDoppler
+name: Hamekoz
 
 on:
   pull_request:
@@ -9,23 +9,23 @@ on:
       - v*.*.*
 
 jobs:
-  fromdoppler:
+  Hamekoz:
     name: Conventions
-    uses: FromDoppler/.github/.github/workflows/conventions.yml@main
+    uses: Hamekoz/.github/.github/workflows/conventions.yml@main
     secrets: inherit
   dotnet:
     name: Continuous Integration
-    uses: FromDoppler/.github/.github/workflows/dotnet.yml@main
+    uses: Hamekoz/.github/.github/workflows/dotnet.yml@main
     secrets: inherit
   nuget:
     if: ${{ github.event_name == 'push' }}
     name: Continuous Delivery
-    uses: FromDoppler/.github/.github/workflows/continuous-delivery-nuget.yml@main
+    uses: Hamekoz/.github/.github/workflows/continuous-delivery-nuget.yml@main
     secrets: inherit
   docker:
     if: ${{ github.event_name == 'push' }}
     name: Continuous Delivery Default Project
-    uses: FromDoppler/.github/.github/workflows/continuous-delivery-dockerfile.yml@main
+    uses: Hamekoz/.github/.github/workflows/continuous-delivery-dockerfile.yml@main
     secrets: inherit
     with:
       dockerfile-path: "DefaultProject/Dockerfile"
@@ -33,7 +33,7 @@ jobs:
   docker-another:
     if: ${{ github.event_name == 'push' }}
     name: Continuous Delivery Another Project
-    uses: FromDoppler/.github/.github/workflows/continuous-delivery-dockerfile.yml@main
+    uses: Hamekoz/.github/.github/workflows/continuous-delivery-dockerfile.yml@main
     secrets: inherit
     with:
       dockerfile-path: "AnotherProject/Dockerfile"

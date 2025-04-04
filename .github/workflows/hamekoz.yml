@@ -1,4 +1,4 @@
-name: FromDoppler
+name: Hamekoz
 
 on:
   push:
@@ -9,4 +9,4 @@ on:
 jobs:
   conventional-commits:
     name: Conventions
-    uses: FromDoppler/.github/.github/workflows/conventions.yml@main
+    uses: hamekoz/.github/.github/workflows/conventions.yml@main

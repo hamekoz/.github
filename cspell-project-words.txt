@@ -8,12 +8,7 @@ NZEC
 PATHCONV
 
 # Own terms
-doppler
-dopplerdock
-dplr
-fromdoppler
-mseditor
-mydplr
+Hamekoz
 
 # Technical terms
 Liskov
@@ -21,7 +16,6 @@ Liskov
 # our services and providers
 aspnet
 aspnetcore
-cdndoppler
 dockerhub
 dockerlint
 dotnet

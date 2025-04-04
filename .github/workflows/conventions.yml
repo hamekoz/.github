@@ -27,4 +27,4 @@ jobs:
             -c title-max-length.line-length=100
   code-format:
     name: Code Format
-    uses: FromDoppler/.github/.github/workflows/code-format-verification.yml@main
+    uses: hamekoz/.github/.github/workflows/code-format-verification.yml@main

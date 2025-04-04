@@ -6,8 +6,6 @@ build
 .gitignore
 Dockerfile*
 Jenkinsfile
-.doppler-ci
-doppler-jenkins-ci.groovy
 
 # Allow copying encrypted secrets only (SOPS)
 *.[sS]ecret.*
