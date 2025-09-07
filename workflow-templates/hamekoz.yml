@@ -4,12 +4,13 @@ on:
   pull_request:
     branches: [$default-branch]
   push:
-    branches: [$default-branch, "INT"]
+    branches: [$default-branch, "uat", "stg"]
     tags:
       - v*.*.*
 
 jobs:
   conventional-commits:
+    if: ${{ github.event_name == 'pull_request' }}
     name: Conventional Commits
     uses: hamekoz/.github/.github/workflows/conventional-commits.yml@main
   continuous-integration:
