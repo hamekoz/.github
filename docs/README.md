@@ -46,6 +46,13 @@ Este directorio es el **hub centralizado** de estándares, convenciones y polít
 | [Política de revisión](./ai/review-policy.md)               | Revisión humana obligatoria de cambios generados por IA |
 | [Plantilla de historial IA](./ai/ai-task-log-template.md)   | Formato de registro de tareas realizadas con IA         |
 
+### Herramientas de desarrollo
+
+| Documento                                   | Descripción                                        |
+| ------------------------------------------- | -------------------------------------------------- |
+| [VS Code](./tooling/vscode.md)              | Configuración, settings y extensiones recomendadas |
+| [Dev Containers](./tooling/devcontainer.md) | Entornos de desarrollo reproducibles               |
+
 ### Adopción y onboarding
 
 | Documento                                                     | Descripción                                                 |

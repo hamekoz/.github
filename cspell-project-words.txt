@@ -45,6 +45,22 @@ idempotente
 Idempotencia
 idempotencia
 
+# Tooling terms
+devcontainer
+Devcontainer
+Codespaces
+codespaces
+rbenv
+endwise
+SonarLint
+sonarlint
+omnisharp
+IntelliCode
+intellicode
+LiveShare
+liveshare
+gitlens
+
 # our services and providers
 aspnet
 aspnetcore

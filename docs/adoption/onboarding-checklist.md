@@ -16,6 +16,13 @@ Completar **antes del primer commit real de funcionalidad**.
 - [ ] `CHANGELOG.md` con entrada inicial.
 - [ ] Definir `main` como rama por defecto.
 
+### Entorno de desarrollo
+
+- [ ] `.vscode/settings.json` con configuración base del workspace (ver [guía VS Code](../tooling/vscode.md)).
+- [ ] `.vscode/extensions.json` con extensiones recomendadas para el stack.
+- [ ] (Recomendado) `.devcontainer/devcontainer.json` con el entorno de desarrollo reproducible (ver [guía Dev Containers](../tooling/devcontainer.md)).
+- [ ] `.env.example` con las variables de entorno requeridas (sin valores reales) si el proyecto usa variables de entorno.
+
 ### Calidad de código
 
 - [ ] Configurar herramienta de lint/formato para el stack:
@@ -86,20 +93,24 @@ Para repositorios que ya tienen historia pero no cumplen todos los estándares.
 
 ## Matriz de adopción por stack
 
-| Herramienta/Práctica    | .NET | Ruby on Rails | Obligatorio |
-| ----------------------- | ---- | ------------- | ----------- |
-| Conventional Commits    | ✅   | ✅            | Sí          |
-| CI en cada PR           | ✅   | ✅            | Sí          |
-| Branch protection       | ✅   | ✅            | Sí          |
-| dotnet format / RuboCop | ✅   | ✅            | Sí          |
-| Tests automáticos       | ✅   | ✅            | Sí          |
-| Semantic Versioning     | ✅   | ✅            | Sí          |
-| Codecov / cobertura     | ✅   | ✅            | Recomendado |
-| Brakeman (security)     | N/A  | ✅            | Sí (Rails)  |
-| bundler-audit           | N/A  | ✅            | Sí (Rails)  |
-| Dependabot/Renovate     | ✅   | ✅            | Recomendado |
-| CHANGELOG.md            | ✅   | ✅            | Recomendado |
-| docs/ai/ai-task-log.md  | ✅   | ✅            | Si usa IA   |
+| Herramienta/Práctica      | .NET | Ruby on Rails | Obligatorio |
+| ------------------------- | ---- | ------------- | ----------- |
+| Conventional Commits      | ✅   | ✅            | Sí          |
+| CI en cada PR             | ✅   | ✅            | Sí          |
+| Branch protection         | ✅   | ✅            | Sí          |
+| dotnet format / RuboCop   | ✅   | ✅            | Sí          |
+| Tests automáticos         | ✅   | ✅            | Sí          |
+| Semantic Versioning       | ✅   | ✅            | Sí          |
+| `.vscode/settings.json`   | ✅   | ✅            | Recomendado |
+| `.vscode/extensions.json` | ✅   | ✅            | Recomendado |
+| `.devcontainer/`          | ✅   | ✅            | Recomendado |
+| `.env.example`            | ✅   | ✅            | Recomendado |
+| Codecov / cobertura       | ✅   | ✅            | Recomendado |
+| Brakeman (security)       | N/A  | ✅            | Sí (Rails)  |
+| bundler-audit             | N/A  | ✅            | Sí (Rails)  |
+| Dependabot/Renovate       | ✅   | ✅            | Recomendado |
+| CHANGELOG.md              | ✅   | ✅            | Recomendado |
+| docs/ai/ai-task-log.md    | ✅   | ✅            | Si usa IA   |
 
 ---
 
