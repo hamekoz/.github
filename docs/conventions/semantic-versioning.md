@@ -73,8 +73,24 @@ Las APIs exponen un endpoint o archivo `version.txt` con el siguiente formato:
                       | <full_version> "@" <source_code_repo_url>
                       | <artifact_repo> ":" <full_version> "@" <source_code_repo_url>
 
-<full_version> ::= <semver_version> "+" <commit_sha>
-                 | <branch_name> "+" <commit_sha>
+<full_version> ::= <name_or_version> "+" <source_code_commit_id>
+                 | <name_or_version> "_" <source_code_commit_id>
+
+<name_or_version> ::= <semver_version>
+                    | <name>
+
+<name> ::= "INT" | "main" | "master" | "TEST" | "develop"
+
+<semver_version> ::= "v" <major> "." <minor> "." <patch>
+
+<major> ::= <digits>
+<minor> ::= <digits>
+<patch> ::= <digits>
+
+<artifact_repo> ::= <docker_hub_org> "/" <docker_hub_repo>
+
+# <digits> matches /\d+/
+# Full regex: /(?:(?<artifact_repo>[\w-]+\/[\w-]+):)?(?<version>v\d+\.\d+\.\d+|INT|main|master|TEST|develop)[_+](?<commit>\w+)(?:@(?<repo_url>.+))?/
 ```
 
 Ejemplo: `v1.4.2+a3f9c12@https://github.com/hamekoz/my-api`

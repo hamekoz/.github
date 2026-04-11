@@ -54,14 +54,14 @@ Todos los repositorios comparten convenciones centralizadas en `hamekoz/.github`
 
 ### .NET (C#)
 
-- Seguir las [convenciones .NET](../docs/code-format/dotnet.md).
+- Seguir las [convenciones .NET](../code-format/dotnet.md).
 - `dotnet format --verify-no-changes` debe pasar sin errores.
 - Usar inyección de dependencias por constructor.
 - Los métodos async llevan el sufijo `Async`.
 
 ### Ruby on Rails
 
-- Seguir las [convenciones Ruby on Rails](../docs/code-format/ruby-on-rails.md).
+- Seguir las [convenciones Ruby on Rails](../code-format/ruby-on-rails.md).
 - `bundle exec rubocop` debe pasar sin errores.
 - Lógica de negocio en service objects, no en controllers ni models.
 - Tests con RSpec siguiendo el patrón Arrange/Act/Assert.

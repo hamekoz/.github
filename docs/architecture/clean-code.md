@@ -63,7 +63,7 @@ Ver [reglas de formato por lenguaje](../code-format/README.md).
 
 - Consistencia en todo el archivo y el proyecto.
 - El código relacionado va junto; el no relacionado, separado.
-- Líneas cortas: máximo 110–120 caracteres.
+- Líneas cortas: máximo 110 caracteres.
 
 ---
 
