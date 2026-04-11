@@ -12,6 +12,38 @@ Hamekoz
 
 # Technical terms
 Liskov
+CQRS
+SOLID
+MAJOR
+MINOR
+PATCH
+semver
+Versioning
+OpenAPI
+Swagger
+Codecov
+mTLS
+healthz
+TestContainers
+RuboCop
+Bundler
+bundler
+Gemfile
+lockfile
+
+# Architecture terms
+Microservicios
+Microservicio
+microservicio
+Onboarding
+onboarding
+liveness
+readiness
+Timely
+Idempotente
+idempotente
+Idempotencia
+idempotencia
 
 # our services and providers
 aspnet

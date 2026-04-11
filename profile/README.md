@@ -1,95 +1,49 @@
 # Hamekoz Projects
 
-## Minimal requirements for new projects
+## Estándares y convenciones
 
-- Only choose private repositories when the code has business value differentiator logic.
+Todos los proyectos de la organización siguen los estándares definidos en el repositorio [hamekoz/.github](https://github.com/hamekoz/.github/tree/main/docs):
 
-- Use [Hamekoz Organization](https://github.com/hamekoz/) for public repositories
+| Estándar                                                                                                      | Descripción                                                  |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| [Conventional Commits](https://github.com/hamekoz/.github/blob/main/docs/conventions/conventional-commits.md) | Formato obligatorio de mensajes de commit                    |
+| [Semantic Versioning](https://github.com/hamekoz/.github/blob/main/docs/conventions/semantic-versioning.md)   | Política de versionado `vMAJOR.MINOR.PATCH`                  |
+| [Branching](https://github.com/hamekoz/.github/blob/main/docs/conventions/branching.md)                       | Estrategia de ramas: `main`, `develop`, `feature/*`, `fix/*` |
+| [Clean Architecture](https://github.com/hamekoz/.github/blob/main/docs/architecture/clean-architecture.md)    | Organización Domain → Application → Infrastructure → API     |
+| [12 Factor App](https://github.com/hamekoz/.github/blob/main/docs/architecture/12-factor.md)                  | Checklist por tipo de servicio                               |
+| [CI/CD](https://github.com/hamekoz/.github/blob/main/docs/ci-cd/README.md)                                    | Pipelines mínimos obligatorios por tipo de proyecto          |
 
-- Do not store secrets in the repository
+## Requisitos mínimos para proyectos nuevos
 
-- Add a `README.md` file with:
+- Solo elegir repositorios privados cuando el código tiene valor diferenciador de negocio.
+- Usar la [Organización Hamekoz](https://github.com/hamekoz/) para repositorios públicos.
+- No almacenar secrets en el repositorio.
+- `README.md` con descripción, arquitectura mínima y guía para contribuidores.
+- CI/CD configurado desde el primer commit (build + tests + verificación de convenciones).
+- Branch protection en `main` y `develop` para evitar bypass del CI.
 
-  - Basic description of the project scope
+## Uso de Inteligencia Artificial
 
-  - Minimal architecture design
+Los proyectos que usen agentes IA deben seguir la [política de uso de IA](https://github.com/hamekoz/.github/blob/main/docs/ai/agent-instructions.md), que incluye:
 
-  - Guide for contributors
+- Toda tarea generada por IA requiere revisión humana antes de merge.
+- Registrar las tareas en el historial `docs/ai/ai-task-log.md` del repositorio.
+- Las instrucciones para GitHub Copilot están centralizadas en este repositorio.
 
-  - Coding standard (When it is not covered by an automated CI process)
+## Version.txt en APIs
 
-- CI/CD from the beginning
+Las APIs exponen un endpoint `/version` con el siguiente formato:
 
-  - Setup CI/CD and all environments even before adding any real functionality
-
-  - Branch protection rules to avoid CI bypass
-
-  - Example automated test even before adding any real functionality
-
-## Nice to have
-
-- Consider base your repository in one of our base projects [See more](#base-projects)
-
-- Validate coding standards using automated CI process [See more](#ci-cd)
-
-- Follow Doppler convention for branches and environments [See more](#ci-cd)
-
-- Generate a version.txt file, or another simple way to check what is the code related to the published system. See more details below. [See more](#version-txt)
-
-- Authenticate users using JWT with our public key [See more]{#doppler-security}
-
-### Version txt
-
-Knowing exactly what source code corresponds to the system we are running use to be very useful.
-
-In our APIs projects we expose a `version.txt` for that
-
-The version format is the following:
-
-```bnf
-<valid_version_info> ::= <full_version>
-                      | <artifact_repo> ":" <full_version>
-                      | <full_version> "@" <source_code_repo_url>
-                      | <artifact_repo> ":" <full_version> "@" <source_code_repo_url>
-
-<full_version> ::= <name_or_version> "+" <source_code_commit_id>
-                | <name_or_version> "_" <source_code_commit_id>
-
-<name_or_version> ::= <semver_version>
-                    | <name>
-
-<name> ::= "INT"
-        | "main"
-        | "master"
-        | "TEST"
-        | "develop"
-
-<semver version> ::= "v" <mayor> "." <minor> "." <patch>
-
-<mayor> ::= <digits>
-
-<minor> ::= <digits>
-
-<patch> ::= <digits>
-
-<artifact_repo> ::= <docker_hub_org> "/" <docker_hub_repo>
-# TODO: add more alternatives for <artifact_repo>
-
-# <digits> matches /\d+/
-# <docker_hub_org> is any valid DockerHub organization name
-# <docker_hub_repo> is any valid DockerHub repository name
-# <source_code_repo_url> is any valid URL
-
-# Full regex: /(?:(?<artifact_repo>(?<docker_hub_org>[\w-]+)\/(?<docker_hub_repo>[\w-]+)):)?(?<version_name>(?<version>v(?<mayor>\d+)\.(?<minor>\d+)\.(?<patch>\d+))|(?<name>INT|main|master|TEST|develop))[_\+](?<source_code_commit_id>\w+)(?:@(?<source_code_repo_url>.+))?/
+```text
+v1.4.2+a3f9c12@https://github.com/hamekoz/my-api
 ```
 
-### Hamekoz GitHub Packages
+Ver formato completo en la [guía de Semantic Versioning](https://github.com/hamekoz/.github/blob/main/docs/conventions/semantic-versioning.md#versiontxt-en-apis).
 
-To use our generated artifacts, follow the next steps
+## GitHub Packages — NuGet
 
-- Generate a [GitHub personal access token](https://github.com/settings/tokens/new) with at least `read:packages` permission
-- Set and use the environment variable `Hamekoz_GITHUB_PACKAGES_TOKEN` with the token generated
+Para usar paquetes NuGet de la organización:
 
-### Configure Hamekoz GitHub Packages as NuGet source
-
-- Use or adapt the [`nuget.config`](https://github.com/hamekoz/.github/blob/main/dotnet-examples/nuget.config) file example into the required repository
+- Generar un [GitHub personal access token](https://github.com/settings/tokens/new) con permiso `read:packages`.
+- Usar la variable de entorno `Hamekoz_GITHUB_PACKAGES_TOKEN` con el token generado.
+- Adaptar el [`nuget.config`](https://github.com/hamekoz/.github/blob/main/dotnet-examples/nuget.config) de ejemplo al repositorio.
