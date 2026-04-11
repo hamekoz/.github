@@ -184,7 +184,7 @@ Verifica que los archivos Markdown cumplan con las reglas definidas en `.markdow
 | ------------------------- | -------------- | ------------------------------------------------------------ |
 | `.vscode/settings.json`   | ✅ Sí          | Garantiza consistencia entre desarrolladores                 |
 | `.vscode/extensions.json` | ✅ Sí          | Facilita el setup inicial                                    |
-| `.vscode/launch.json`     | ✅ Si es útil  | Configuraciones de debug reutilizables por el equipo         |
+| `.vscode/launch.json`     | ✅ Sí es útil  | Configuraciones de debug reutilizables por el equipo         |
 | `.vscode/tasks.json`      | ⚠️ Con cautela | Solo si las tareas son compartidas y no tienen paths locales |
 
 ---

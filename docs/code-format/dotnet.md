@@ -148,7 +148,7 @@ Cada repositorio .NET debe tener un `global.json` en la raíz para fijar la vers
 ```json
 {
   "sdk": {
-    "version": "8.0.x",
+    "version": "8.0.204",
     "rollForward": "latestMinor"
   }
 }

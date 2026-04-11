@@ -109,7 +109,7 @@ Antes de generar código, el agente debe:
 2. Verificar que no exista una solución similar ya implementada.
 3. Identificar y declarar qué archivos serán modificados.
 4. Ejecutar lint y tests después de los cambios.
-5. Registrar la tarea en el [historial de tareas IA](./ai-task-log-template.md) del repositorio.
+5. Registrar la tarea en el [historial de tareas IA](./ai-task-log.md) del repositorio, usando la [plantilla de log](./ai-task-log-template.md) como formato.
 
 ---
 
