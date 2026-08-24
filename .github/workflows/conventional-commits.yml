@@ -22,7 +22,7 @@ jobs:
       - name: Install gitlint
         shell: bash
         run: |
-          python3 -m pip install gitlint
+          python -m pip install gitlint
       - name: Run gitlint
         shell: bash
         run: |
