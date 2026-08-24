@@ -2,11 +2,17 @@ name: Continuous Integration
 
 on:
   workflow_call:
+    inputs:
+      runner:
+        description: "El runner donde se ejecutará el trabajo (ej. ubuntu-latest o self-hosted)"
+        required: false
+        default: "ubuntu-latest"
+        type: string
 
 jobs:
   format-build-test:
     name: .NET format, build and test
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runner }}
     env:
       Hamekoz_GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:

@@ -2,11 +2,17 @@ name: Conventional Commits
 
 on:
   workflow_call:
+    inputs:
+      runner:
+        description: "El runner donde se ejecutará el trabajo (ej. ubuntu-latest o self-hosted)"
+        required: false
+        default: "ubuntu-latest"
+        type: string
 
 jobs:
   conventional-commits:
     name: Conventional Commits
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runner }}
     steps:
       - uses: actions/checkout@v4
         with:

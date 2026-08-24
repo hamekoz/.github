@@ -3,6 +3,11 @@ name: Continuous Delivery
 on:
   workflow_call:
     inputs:
+      runner:
+        description: "El runner donde se ejecutará el trabajo (ej. ubuntu-latest o self-hosted)"
+        required: false
+        default: "ubuntu-latest"
+        type: string
       dockerfile-path:
         description: "Path to Dockerfile to use for build image"
         default: "Dockerfile"
@@ -19,7 +24,7 @@ env:
 jobs:
   github-packages:
     name: Docker image to Github Packages
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runner }}
     permissions:
       contents: read
       packages: write
