@@ -2,11 +2,21 @@ name: Conventions
 
 on:
   workflow_call:
+    inputs:
+      runner:
+        description: "El runner donde se ejecutará el trabajo (ej. ubuntu-latest o self-hosted)"
+        required: false
+        default: "ubuntu-latest"
+        type: string
 
 jobs:
   conventional-commits:
     name: Conventional Commits
     uses: hamekoz/.github/.github/workflows/conventional-commits.yml@main
+    with:
+      runner: ${{ inputs.runner }}
   code-format:
     name: Code Format
     uses: hamekoz/.github/.github/workflows/code-format-verification.yml@main
+    with:
+      runner: ${{ inputs.runner }}

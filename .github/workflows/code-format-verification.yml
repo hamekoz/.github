@@ -2,11 +2,17 @@ name: Code Format Verification
 
 on:
   workflow_call:
+    inputs:
+      runner:
+        description: "El runner donde se ejecutará el trabajo (ej. ubuntu-latest o self-hosted)"
+        required: false
+        default: "ubuntu-latest"
+        type: string
 
 jobs:
   shellcheck:
     name: Shell
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runner }}
     steps:
       - uses: actions/checkout@v4
       - name: Run ShellCheck
@@ -15,7 +21,7 @@ jobs:
           SHELLCHECK_OPTS: -e SC1091 -e SC1090
 
   prettier:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runner }}
     name: Prettier
     steps:
       - name: Checkout
