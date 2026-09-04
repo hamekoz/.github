@@ -8,6 +8,11 @@ on:
         required: false
         default: "ubuntu-latest"
         type: string
+      test_arguments:
+        description: "Argumentos adicionales para el comando dotnet test (p.ej. parámetros de cobertura de código). Permite que cada repositorio que consume el workflow defina su propia configuración de cobertura."
+        required: false
+        default: '--collect:"XPlat Code Coverage"'
+        type: string
 
 jobs:
   format-build-test:
@@ -29,7 +34,7 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
       - name: Test with dotnet
-        run: dotnet test --no-build --configuration Release --collect:"XPlat Code Coverage"
+        run: dotnet test --no-build --configuration Release ${{ inputs.test_arguments }}
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.6.0
         env:
