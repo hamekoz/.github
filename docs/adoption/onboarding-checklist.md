@@ -15,19 +15,19 @@ Complete **before the first real functional commit**.
 - [ ] Appropriate `.gitignore` for the stack.
 - [ ] `.editorconfig` copied from `hamekoz/.github` or adjusted for the stack.
 - [ ] `AGENTS.md` at the root with the stub pointing to the organization criterion (see
-  [AGENTS.md](../ai/AGENTS.md#repository-guidance)).
+      [AGENTS.md](../ai/AGENTS.md#repository-guidance)).
 - [ ] `CHANGELOG.md` with an initial entry.
 - [ ] Set `main` as the default branch.
 
 ### Development environment
 
 - [ ] `.vscode/settings.json` with the base workspace configuration (see
-  [VS Code guide](../tooling/vscode.md)).
+      [VS Code guide](../tooling/vscode.md)).
 - [ ] `.vscode/extensions.json` with recommended extensions for the stack.
 - [ ] (Recommended) `.devcontainer/devcontainer.json` with a reproducible development environment
-  (see [Dev Containers guide](../tooling/devcontainer.md)).
+      (see [Dev Containers guide](../tooling/devcontainer.md)).
 - [ ] `.env.example` with the required environment variables (no real values) if the project uses
-  environment variables.
+      environment variables.
 
 ### Code quality
 
@@ -40,13 +40,13 @@ Complete **before the first real functional commit**.
 ### Testing
 
 - [ ] New projects: Microsoft Testing Platform stack (`xunit.v3` + `coverlet.MTP`,
-  `<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>`, and
-  `"test": { "runner": "Microsoft.Testing.Platform" }` in `global.json`).
+      `<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>`, and
+      `"test": { "runner": "Microsoft.Testing.Platform" }` in `global.json`).
 - [ ] Legacy projects: keep VSTest (`xunit` 2.9.x + `coverlet.collector`).
 - [ ] At least one example test (even a "hello world") passing in CI.
 - [ ] Coverage configured in CI with the criterion thresholds (line ≥ 80%, branch ≥ 70%).
 - [ ] The shared `dotnet.yml` workflow is consumed with the `test_arguments` input matching the
-  project runner (see [Testing .NET](../testing/dotnet.md#ci--shared-workflow)).
+      project runner (see [Testing .NET](../testing/dotnet.md#ci--shared-workflow)).
 
 ### CI/CD
 
@@ -79,10 +79,10 @@ Complete **before the first real functional commit**.
 ### AI usage (if applicable)
 
 - [ ] Create `AGENTS.md` at the root with the stub pointing to the organization criterion (see
-  [AGENTS.md](../ai/AGENTS.md)).
+      [AGENTS.md](../ai/AGENTS.md)).
 - [ ] Create `docs/ai/ai-task-log.md` if the repository will use AI agents.
 - [ ] Review that the organization `.github/copilot-instructions.md` covers the project context (or
-  add a local one with project specifics).
+      add a local one with project specifics).
 
 ---
 
@@ -114,25 +114,25 @@ For repositories that already have history but do not meet all the standards.
 
 ## Adoption matrix by stack
 
-| Tool/Practice              | .NET | Ruby on Rails | Required   |
-| -------------------------- | ---- | ------------- | ---------- |
-| Conventional Commits       | ✅   | ✅            | Yes        |
-| CI on every PR             | ✅   | ✅            | Yes        |
-| Branch protection          | ✅   | ✅            | Yes        |
-| dotnet format / RuboCop    | ✅   | ✅            | Yes        |
-| Automated tests            | ✅   | ✅            | Yes        |
-| Semantic Versioning        | ✅   | ✅            | Yes        |
-| `.vscode/settings.json`    | ✅   | ✅            | Recommended |
-| `.vscode/extensions.json`  | ✅   | ✅            | Recommended |
-| `.devcontainer/`           | ✅   | ✅            | Recommended |
-| `.env.example`             | ✅   | ✅            | Recommended |
-| Codecov / coverage         | ✅   | ✅            | Recommended |
-| `AGENTS.md` (org stub)     | ✅   | ✅            | Yes        |
-| Brakeman (security)        | N/A  | ✅            | Yes (Rails) |
-| bundler-audit              | N/A  | ✅            | Yes (Rails) |
-| Dependabot/Renovate        | ✅   | ✅            | Recommended |
-| CHANGELOG.md               | ✅   | ✅            | Recommended |
-| docs/ai/ai-task-log.md     | ✅   | ✅            | If AI used |
+| Tool/Practice             | .NET | Ruby on Rails | Required    |
+| ------------------------- | ---- | ------------- | ----------- |
+| Conventional Commits      | ✅   | ✅            | Yes         |
+| CI on every PR            | ✅   | ✅            | Yes         |
+| Branch protection         | ✅   | ✅            | Yes         |
+| dotnet format / RuboCop   | ✅   | ✅            | Yes         |
+| Automated tests           | ✅   | ✅            | Yes         |
+| Semantic Versioning       | ✅   | ✅            | Yes         |
+| `.vscode/settings.json`   | ✅   | ✅            | Recommended |
+| `.vscode/extensions.json` | ✅   | ✅            | Recommended |
+| `.devcontainer/`          | ✅   | ✅            | Recommended |
+| `.env.example`            | ✅   | ✅            | Recommended |
+| Codecov / coverage        | ✅   | ✅            | Recommended |
+| `AGENTS.md` (org stub)    | ✅   | ✅            | Yes         |
+| Brakeman (security)       | N/A  | ✅            | Yes (Rails) |
+| bundler-audit             | N/A  | ✅            | Yes (Rails) |
+| Dependabot/Renovate       | ✅   | ✅            | Recommended |
+| CHANGELOG.md              | ✅   | ✅            | Recommended |
+| docs/ai/ai-task-log.md    | ✅   | ✅            | If AI used  |
 
 ---
 

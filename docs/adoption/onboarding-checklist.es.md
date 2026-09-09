@@ -34,13 +34,13 @@ Completar **antes del primer commit real de funcionalidad**.
 ### Testing
 
 - [ ] Proyectos nuevos: stack Microsoft Testing Platform (`xunit.v3` + `coverlet.MTP`,
-  `<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>` y
-  `"test": { "runner": "Microsoft.Testing.Platform" }` en `global.json`).
+      `<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>` y
+      `"test": { "runner": "Microsoft.Testing.Platform" }` en `global.json`).
 - [ ] Proyectos legacy: mantener VSTest (`xunit` 2.9.x + `coverlet.collector`).
 - [ ] Al menos un test de ejemplo (aunque sea un "hello world") pasando en CI.
 - [ ] Cobertura configurada en CI con los umbrales del criterio (línea ≥ 80 %, rama ≥ 70 %).
 - [ ] El workflow compartido `dotnet.yml` se consume con el input `test_arguments` adecuado al
-  runner del proyecto (ver [Testing .NET](../testing/dotnet.md#ci--shared-workflow)).
+      runner del proyecto (ver [Testing .NET](../testing/dotnet.md#ci--shared-workflow)).
 
 ### CI/CD
 

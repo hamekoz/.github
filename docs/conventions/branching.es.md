@@ -2,10 +2,10 @@
 
 ## Ramas principales
 
-| Rama       | Propósito                                               | Ambiente destino |
-| ---------- | ------------------------------------------------------- | ---------------- |
-| `main`     | Código en producción. Siempre estable y deployable.     | Producción       |
-| `develop`  | Integración de features. Base para branches de trabajo. | Integración / QA |
+| Rama      | Propósito                                               | Ambiente destino |
+| --------- | ------------------------------------------------------- | ---------------- |
+| `main`    | Código en producción. Siempre estable y deployable.     | Producción       |
+| `develop` | Integración de features. Base para branches de trabajo. | Integración / QA |
 
 Ambas ramas están **protegidas**: no se puede hacer push directo; todo cambio entra por Pull
 Request.
@@ -55,11 +55,11 @@ Un hotfix crítico que no puede esperar el ciclo normal:
 
 ## Ambientes
 
-| Ambiente       | Rama            | Trigger de deploy         |
-| -------------- | --------------- | ------------------------- |
-| Integración    | `develop`       | Push a `develop`          |
-| Staging/UAT    | `uat`/`stg` (opcional) | Push o tag de pre-release |
-| Producción     | `main`          | Tag `v*.*.*` en `main`    |
+| Ambiente    | Rama                   | Trigger de deploy         |
+| ----------- | ---------------------- | ------------------------- |
+| Integración | `develop`              | Push a `develop`          |
+| Staging/UAT | `uat`/`stg` (opcional) | Push o tag de pre-release |
+| Producción  | `main`                 | Tag `v*.*.*` en `main`    |
 
 ## Reglas de protección de ramas
 

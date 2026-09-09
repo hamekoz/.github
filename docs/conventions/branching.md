@@ -2,10 +2,10 @@
 
 ## Main branches
 
-| Branch | Purpose | Target environment |
-|---|---|---|
-| `main` | Production code. Always stable and deployable. | Production |
-| `develop` | Feature integration. Base for working branches. | Integration / QA |
+| Branch    | Purpose                                         | Target environment |
+| --------- | ----------------------------------------------- | ------------------ |
+| `main`    | Production code. Always stable and deployable.  | Production         |
+| `develop` | Feature integration. Base for working branches. | Integration / QA   |
 
 Both branches are **protected**: no direct push; every change enters through a Pull Request.
 
@@ -13,13 +13,13 @@ Both branches are **protected**: no direct push; every change enters through a P
 
 Working branches are created from `develop` and deleted after merging:
 
-| Prefix | Purpose | Example |
-|---|---|---|
-| `feature/` | New functionality | `feature/add-oauth-login` |
-| `fix/` | Bug fix | `fix/null-reference-on-checkout` |
-| `hotfix/` | Urgent production fix | `hotfix/critical-auth-bypass` |
-| `chore/` | Maintenance, deps, infra | `chore/update-sdks` |
-| `docs/` | Documentation only | `docs/update-api-guide` |
+| Prefix      | Purpose                             | Example                            |
+| ----------- | ----------------------------------- | ---------------------------------- |
+| `feature/`  | New functionality                   | `feature/add-oauth-login`          |
+| `fix/`      | Bug fix                             | `fix/null-reference-on-checkout`   |
+| `hotfix/`   | Urgent production fix               | `hotfix/critical-auth-bypass`      |
+| `chore/`    | Maintenance, deps, infra            | `chore/update-sdks`                |
+| `docs/`     | Documentation only                  | `docs/update-api-guide`            |
 | `refactor/` | Refactoring without behavior change | `refactor/extract-payment-service` |
 
 **AI agents use the same semantic prefixes** based on the type of change. There is no
@@ -54,11 +54,11 @@ A critical fix that cannot wait for the normal cycle:
 
 ## Environments
 
-| Environment | Branch | Deploy trigger |
-|---|---|---|
-| Integration | `develop` | Push to `develop` |
+| Environment | Branch                    | Deploy trigger          |
+| ----------- | ------------------------- | ----------------------- |
+| Integration | `develop`                 | Push to `develop`       |
 | Staging/UAT | `uat` or `stg` (optional) | Push or pre-release tag |
-| Production | `main` | Tag `v*.*.*` on `main` |
+| Production  | `main`                    | Tag `v*.*.*` on `main`  |
 
 ## Branch protection rules
 

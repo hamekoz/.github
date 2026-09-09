@@ -32,9 +32,9 @@ Este directorio es el **hub centralizado** de estándares, convenciones y polít
 
 ### Testing
 
-| Documento                         | Descripción                                        |
-| --------------------------------- | -------------------------------------------------- |
-| [.NET](./testing/dotnet.md)       | Stack de testing (MTP/VSTest), cobertura y CI      |
+| Documento                   | Descripción                                   |
+| --------------------------- | --------------------------------------------- |
+| [.NET](./testing/dotnet.md) | Stack de testing (MTP/VSTest), cobertura y CI |
 
 ### CI/CD
 

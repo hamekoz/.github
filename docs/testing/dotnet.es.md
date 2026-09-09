@@ -229,11 +229,11 @@ El workflow sube el reporte de cobertura a Codecov después del paso de test. Co
 
 La cobertura es una compuerta de calidad, no un objetivo absoluto. Mínimos sugeridos por módulo:
 
-| Métrica | Mínimo |
-|---|---|
+| Métrica            | Mínimo |
+| ------------------ | ------ |
 | Cobertura de línea | >= 80% |
 | Cobertura de ramas | >= 70% |
-| CRAP score | <= 30 |
+| CRAP score         | <= 30  |
 
 - Medir los caminos críticos: validación, invariantes, manejo de errores, decisiones de seguridad.
 - No perseguir 100%. Preferir aserciones con significado antes que inflar el conteo de líneas.

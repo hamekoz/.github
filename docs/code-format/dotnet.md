@@ -18,16 +18,16 @@ dotnet format --verify-no-changes
 
 ## Naming conventions (C#)
 
-| Element | Convention | Example |
-|---|---|---|
-| Classes, Interfaces, Enums | `PascalCase` | `OrderService`, `IPaymentGateway` |
-| Methods, Properties | `PascalCase` | `GetOrderById`, `IsActive` |
-| Async methods | `PascalCase` + `Async` | `GetOrderAsync` |
-| Local variables, parameters | `camelCase` | `orderId`, `paymentResult` |
-| Private fields | `_camelCase` | `_repository`, `_logger` |
-| Constants | `UPPER_SNAKE_CASE` | `MAX_RETRY_COUNT`, `DEFAULT_TIME_ZONE` |
-| Interfaces | `I` prefix | `IOrderRepository` |
-| Generic types | `T`, `TKey`, `TValue` | `Repository<TEntity>` |
+| Element                     | Convention             | Example                                |
+| --------------------------- | ---------------------- | -------------------------------------- |
+| Classes, Interfaces, Enums  | `PascalCase`           | `OrderService`, `IPaymentGateway`      |
+| Methods, Properties         | `PascalCase`           | `GetOrderById`, `IsActive`             |
+| Async methods               | `PascalCase` + `Async` | `GetOrderAsync`                        |
+| Local variables, parameters | `camelCase`            | `orderId`, `paymentResult`             |
+| Private fields              | `_camelCase`           | `_repository`, `_logger`               |
+| Constants                   | `UPPER_SNAKE_CASE`     | `MAX_RETRY_COUNT`, `DEFAULT_TIME_ZONE` |
+| Interfaces                  | `I` prefix             | `IOrderRepository`                     |
+| Generic types               | `T`, `TKey`, `TValue`  | `Repository<TEntity>`                  |
 
 Variables are named by **content**, never by type, technology, or origin (see
 [Clean Code](../architecture/clean-code.md)).

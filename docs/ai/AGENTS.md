@@ -58,18 +58,18 @@ truth: `CLAUDE.md`, `AI.md`, `.instructions.md`, `.agents/custom-instructions.md
 <type>[scope]: <description>
 ```
 
-| Type | When to use |
-|---|---|
-| `feat` | New feature |
-| `fix` | Bug fix |
-| `docs` | Documentation only |
-| `style` | Formatting / whitespace no logic |
-| `refactor` | No behavior change |
-| `perf` | Performance |
-| `test` | Adding/changing tests |
-| `chore` | Maintenance, deps, tooling |
-| `ci` | CI/CD configuration |
-| `build` | Build system |
+| Type       | When to use                      |
+| ---------- | -------------------------------- |
+| `feat`     | New feature                      |
+| `fix`      | Bug fix                          |
+| `docs`     | Documentation only               |
+| `style`    | Formatting / whitespace no logic |
+| `refactor` | No behavior change               |
+| `perf`     | Performance                      |
+| `test`     | Adding/changing tests            |
+| `chore`    | Maintenance, deps, tooling       |
+| `ci`       | CI/CD configuration              |
+| `build`    | Build system                     |
 
 Description: lowercase, imperative mood ("add", not "added"), no trailing period, English only.
 CI enforces this with gitlint.
@@ -78,14 +78,14 @@ CI enforces this with gitlint.
 
 ## Branching
 
-| Prefix | Purpose |
-|---|---|
-| `feature/` | New functionality |
-| `fix/` | Bug fixes |
-| `hotfix/` | Urgent production fix |
-| `chore/` | Maintenance |
-| `docs/` | Documentation |
-| `refactor/` | Restructuring |
+| Prefix      | Purpose               |
+| ----------- | --------------------- |
+| `feature/`  | New functionality     |
+| `fix/`      | Bug fixes             |
+| `hotfix/`   | Urgent production fix |
+| `chore/`    | Maintenance           |
+| `docs/`     | Documentation         |
+| `refactor/` | Restructuring         |
 
 Branches are created from `develop` (or `main` for hotfixes) and merged via PR. See
 [Branching strategy](../conventions/branching.md).
@@ -94,13 +94,13 @@ Branches are created from `develop` (or `main` for hotfixes) and merged via PR. 
 
 ## Criterion documents (read before coding)
 
-| Dimension | Document |
-|---|---|
-| Architecture | [Clean Architecture](../architecture/clean-architecture.md) |
-| Code quality | [Clean Code](../architecture/clean-code.md) |
-| Code format `.NET` | [Code Format .NET](../code-format/dotnet.md) |
-| Testing `.NET` | [Testing .NET](../testing/dotnet.md) |
-| AI + human review | [Review policy](../ai/review-policy.md) |
+| Dimension          | Document                                                    |
+| ------------------ | ----------------------------------------------------------- |
+| Architecture       | [Clean Architecture](../architecture/clean-architecture.md) |
+| Code quality       | [Clean Code](../architecture/clean-code.md)                 |
+| Code format `.NET` | [Code Format .NET](../code-format/dotnet.md)                |
+| Testing `.NET`     | [Testing .NET](../testing/dotnet.md)                        |
+| AI + human review  | [Review policy](../ai/review-policy.md)                     |
 
 ### Highlights
 
@@ -119,13 +119,13 @@ Branches are created from `develop` (or `main` for hotfixes) and merged via PR. 
 
 ## Code style basics (recap)
 
-| Element | Convention | Example |
-|---|---|---|
-| Classes / Methods / Properties | `PascalCase` | `GetOrderAsync` |
-| Private fields | `_camelCase` | `_repository` |
-| Constants | `UPPER_SNAKE_CASE` | `MAX_RETRY_COUNT` |
-| Async methods | `Async` suffix | `GetOrderAsync` |
-| Parameters / locals | `camelCase` | `orderId` |
+| Element                        | Convention         | Example           |
+| ------------------------------ | ------------------ | ----------------- |
+| Classes / Methods / Properties | `PascalCase`       | `GetOrderAsync`   |
+| Private fields                 | `_camelCase`       | `_repository`     |
+| Constants                      | `UPPER_SNAKE_CASE` | `MAX_RETRY_COUNT` |
+| Async methods                  | `Async` suffix     | `GetOrderAsync`   |
+| Parameters / locals            | `camelCase`        | `orderId`         |
 
 Database models in `es-AR` domain language must keep English identifiers and map
 Argentina-specific concepts into explicit value objects with clear names.
@@ -153,5 +153,5 @@ Argentina-specific concepts into explicit value objects with clear names.
 
 ---
 
-*This file is owned by the Hamekoz organization. Update it when the organization criterion
-changes; per-repository `AGENTS.md` files remain lightweight pointers.*
+_This file is owned by the Hamekoz organization. Update it when the organization criterion
+changes; per-repository `AGENTS.md` files remain lightweight pointers._

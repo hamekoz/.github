@@ -76,14 +76,14 @@ Log the task in the repository AI task log
 
 ## Required approvals
 
-| Change type | Minimum approvals |
-|---|---|
-| Documentation / comments | 1 |
-| Tests, CI | 1 |
-| Application code | 1 |
-| Architecture or design changes | 2 |
-| Security or authentication changes | 2 (one must be a maintainer) |
-| Shared workflow changes (`.github`) | 2 maintainers |
+| Change type                         | Minimum approvals            |
+| ----------------------------------- | ---------------------------- |
+| Documentation / comments            | 1                            |
+| Tests, CI                           | 1                            |
+| Application code                    | 1                            |
+| Architecture or design changes      | 2                            |
+| Security or authentication changes  | 2 (one must be a maintainer) |
+| Shared workflow changes (`.github`) | 2 maintainers                |
 
 ---
 

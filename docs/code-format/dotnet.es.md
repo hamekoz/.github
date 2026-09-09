@@ -18,16 +18,16 @@ dotnet format --verify-no-changes
 
 ## Convenciones de naming (C#)
 
-| Elemento                          | Convención              | Ejemplo                            |
-| --------------------------------- | ----------------------- | ---------------------------------- |
-| Clases, Interfaces, Enums         | `PascalCase`            | `OrderService`, `IPaymentGateway`  |
-| Métodos, Propiedades              | `PascalCase`            | `GetOrderById`, `IsActive`         |
-| Métodos async                     | `PascalCase` + `Async`  | `GetOrderAsync`                    |
-| Variables locales, parámetros     | `camelCase`             | `orderId`, `paymentResult`         |
-| Campos privados                   | `_camelCase`            | `_repository`, `_logger`           |
-| Constantes                        | `UPPER_SNAKE_CASE`      | `MAX_RETRY_COUNT`, `DEFAULT_TIME_ZONE` |
-| Interfaces                        | Prefijo `I`             | `IOrderRepository`                 |
-| Tipos genéricos                   | `T`, `TKey`, `TValue`   | `Repository<TEntity>`              |
+| Elemento                      | Convención             | Ejemplo                                |
+| ----------------------------- | ---------------------- | -------------------------------------- |
+| Clases, Interfaces, Enums     | `PascalCase`           | `OrderService`, `IPaymentGateway`      |
+| Métodos, Propiedades          | `PascalCase`           | `GetOrderById`, `IsActive`             |
+| Métodos async                 | `PascalCase` + `Async` | `GetOrderAsync`                        |
+| Variables locales, parámetros | `camelCase`            | `orderId`, `paymentResult`             |
+| Campos privados               | `_camelCase`           | `_repository`, `_logger`               |
+| Constantes                    | `UPPER_SNAKE_CASE`     | `MAX_RETRY_COUNT`, `DEFAULT_TIME_ZONE` |
+| Interfaces                    | Prefijo `I`            | `IOrderRepository`                     |
+| Tipos genéricos               | `T`, `TKey`, `TValue`  | `Repository<TEntity>`                  |
 
 Las variables se nombran por **contenido**, nunca por tipo, tecnología u origen (ver
 [Clean Code](../architecture/clean-code.md)).

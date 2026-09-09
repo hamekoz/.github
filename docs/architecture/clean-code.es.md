@@ -97,12 +97,12 @@ Ver [reglas de formato por lenguaje](../code-format/README.md).
 
 ## Convenciones de naming (C#)
 
-| Elemento                      | Convención        | Ejemplo                          |
-| ----------------------------- | ----------------- | -------------------------------- |
-| Clases / Métodos / Propiedades| `PascalCase`      | `OrderService`, `GetOrderAsync`  |
-| Campos privados               | `_camelCase`      | `_logger`, `_repository`         |
-| Constantes                    | `UPPER_SNAKE_CASE`| `MAX_STOCK_ITEMS`, `DEFAULT_TIMEZONE` |
-| Métodos async                 | Sufijo `Async`    | `GetOrderAsync`                  |
+| Elemento                       | Convención         | Ejemplo                               |
+| ------------------------------ | ------------------ | ------------------------------------- |
+| Clases / Métodos / Propiedades | `PascalCase`       | `OrderService`, `GetOrderAsync`       |
+| Campos privados                | `_camelCase`       | `_logger`, `_repository`              |
+| Constantes                     | `UPPER_SNAKE_CASE` | `MAX_STOCK_ITEMS`, `DEFAULT_TIMEZONE` |
+| Métodos async                  | Sufijo `Async`     | `GetOrderAsync`                       |
 
 ### Named arguments para intención clara
 
@@ -191,14 +191,14 @@ public sealed class StockService(IStockStore store, ILogger<StockService> logger
 
 ## Anti-patterns a evitar
 
-| Anti-Pattern | Problema | Solución |
-|---|---|---|
-| **Magic numbers/strings** | Valores sin contexto | Extraer a constantes nombradas |
-| **God Objects** | Clases que hacen demasiado | Dividir en responsabilidades |
-| **Primitive Obsession** | `string`/`int` en lugar de tipos | Value objects: `record OrderId(int Value)` |
-| **Long Parameter Lists** | Métodos con 5+ parámetros | Data Transfer Object (DTO) |
-| **Flag Parameters** | `bool includeDeleted` | Métodos separados: `GetActiveAsync()`, `GetDeletedAsync()` |
-| **Comments Instead of Code** | Lógica oscura + comentarios | Refactorizar a código auto-documentado |
+| Anti-Pattern                 | Problema                         | Solución                                                   |
+| ---------------------------- | -------------------------------- | ---------------------------------------------------------- |
+| **Magic numbers/strings**    | Valores sin contexto             | Extraer a constantes nombradas                             |
+| **God Objects**              | Clases que hacen demasiado       | Dividir en responsabilidades                               |
+| **Primitive Obsession**      | `string`/`int` en lugar de tipos | Value objects: `record OrderId(int Value)`                 |
+| **Long Parameter Lists**     | Métodos con 5+ parámetros        | Data Transfer Object (DTO)                                 |
+| **Flag Parameters**          | `bool includeDeleted`            | Métodos separados: `GetActiveAsync()`, `GetDeletedAsync()` |
+| **Comments Instead of Code** | Lógica oscura + comentarios      | Refactorizar a código auto-documentado                     |
 
 ---
 
@@ -206,21 +206,21 @@ public sealed class StockService(IStockStore store, ILogger<StockService> logger
 
 ### SOLID
 
-| Principio                     | Resumen                                                                 |
-| ----------------------------- | ----------------------------------------------------------------------- |
-| **S** — Single Responsibility | Una clase, una razón para cambiar                                       |
-| **O** — Open/Closed           | Abierta para extensión, cerrada para modificación                       |
-| **L** — Liskov Substitution   | Las subclases deben ser intercambiables por sus bases                   |
+| Principio                     | Resumen                                                                    |
+| ----------------------------- | -------------------------------------------------------------------------- |
+| **S** — Single Responsibility | Una clase, una razón para cambiar                                          |
+| **O** — Open/Closed           | Abierta para extensión, cerrada para modificación                          |
+| **L** — Liskov Substitution   | Las subclases deben ser intercambiables por sus bases                      |
 | **I** — Interface Segregation | Interfaces pequeñas y específicas; no forzar implementaciones innecesarias |
-| **D** — Dependency Inversion  | Depender de abstracciones, no de implementaciones concretas             |
+| **D** — Dependency Inversion  | Depender de abstracciones, no de implementaciones concretas                |
 
 ### DRY, KISS, YAGNI
 
-| Principio                         | Descripción                                                             |
-| --------------------------------- | ----------------------------------------------------------------------- |
-| **DRY**                           | Cada pieza de conocimiento tiene una representación única y no ambigua  |
-| **KISS**                          | Preferir la solución más simple que resuelva el problema                |
-| **YAGNI**                         | No agregar funcionalidad hasta que sea necesaria                        |
+| Principio | Descripción                                                            |
+| --------- | ---------------------------------------------------------------------- |
+| **DRY**   | Cada pieza de conocimiento tiene una representación única y no ambigua |
+| **KISS**  | Preferir la solución más simple que resuelva el problema               |
+| **YAGNI** | No agregar funcionalidad hasta que sea necesaria                       |
 
 ---
 

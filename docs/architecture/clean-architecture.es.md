@@ -114,12 +114,12 @@ public static class StockEndpoints
 
 ## Verificación de dirección de dependencias en PR
 
-| ✅ Permitido                     | ❌ Prohibido                     |
-| -------------------------------- | -------------------------------- |
-| `Services` → `Core`              | `Core` → `Services`              |
-| `Data` → `Services` (interfaces) | `Services` → `Data`              |
-| `Web/API` → `Services`           | `Core` → `Data`                  |
-| `Tests` → cualquier capa         | cualquier capa → `Tests`         |
+| ✅ Permitido                     | ❌ Prohibido             |
+| -------------------------------- | ------------------------ |
+| `Services` → `Core`              | `Core` → `Services`      |
+| `Data` → `Services` (interfaces) | `Services` → `Data`      |
+| `Web/API` → `Services`           | `Core` → `Data`          |
+| `Tests` → cualquier capa         | cualquier capa → `Tests` |
 
 ---
 

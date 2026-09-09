@@ -114,12 +114,12 @@ public static class StockEndpoints
 
 ## Dependency direction check in PR
 
-| ✅ Allowed                        | ❌ Forbidden                   |
-| --------------------------------- | ------------------------------ |
-| `Services` → `Core`               | `Core` → `Services`            |
-| `Data` → `Services` (interfaces)  | `Services` → `Data`            |
-| `Web/API` → `Services`            | `Core` → `Data`                |
-| `Tests` → any layer               | any layer → `Tests`            |
+| ✅ Allowed                       | ❌ Forbidden        |
+| -------------------------------- | ------------------- |
+| `Services` → `Core`              | `Core` → `Services` |
+| `Data` → `Services` (interfaces) | `Services` → `Data` |
+| `Web/API` → `Services`           | `Core` → `Data`     |
+| `Tests` → any layer              | any layer → `Tests` |
 
 ---
 

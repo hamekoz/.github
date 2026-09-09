@@ -94,12 +94,12 @@ See [per-language format rules](../code-format/README.md).
 
 ## Naming conventions (C#)
 
-| Element | Convention | Example |
-|---|---|---|
-| Classes / Methods / Properties | `PascalCase` | `OrderService`, `GetOrderAsync` |
-| Private fields | `_camelCase` | `_logger`, `_repository` |
-| Constants | `UPPER_SNAKE_CASE` | `MAX_STOCK_ITEMS`, `DEFAULT_TIMEZONE` |
-| Async methods | `Async` suffix | `GetOrderAsync` |
+| Element                        | Convention         | Example                               |
+| ------------------------------ | ------------------ | ------------------------------------- |
+| Classes / Methods / Properties | `PascalCase`       | `OrderService`, `GetOrderAsync`       |
+| Private fields                 | `_camelCase`       | `_logger`, `_repository`              |
+| Constants                      | `UPPER_SNAKE_CASE` | `MAX_STOCK_ITEMS`, `DEFAULT_TIMEZONE` |
+| Async methods                  | `Async` suffix     | `GetOrderAsync`                       |
 
 ### Named arguments for clear intent
 
@@ -187,14 +187,14 @@ public sealed class StockService(IStockStore store, ILogger<StockService> logger
 
 ## Anti-patterns to avoid
 
-| Anti-pattern | Problem | Solution |
-|---|---|---|
-| **Magic numbers/strings** | Values without context | Extract named constants |
-| **God objects** | Classes doing too much | Split responsibilities |
-| **Primitive obsession** | `string`/`int` instead of types | Value objects: `record OrderId(int Value)` |
-| **Long parameter lists** | Methods with 5+ parameters | Data Transfer Object (DTO) |
-| **Flag parameters** | `bool includeDeleted` | Separate methods: `GetActiveAsync()`, `GetDeletedAsync()` |
-| **Comments instead of code** | Opaque logic + comments | Refactor to self-documenting code |
+| Anti-pattern                 | Problem                         | Solution                                                  |
+| ---------------------------- | ------------------------------- | --------------------------------------------------------- |
+| **Magic numbers/strings**    | Values without context          | Extract named constants                                   |
+| **God objects**              | Classes doing too much          | Split responsibilities                                    |
+| **Primitive obsession**      | `string`/`int` instead of types | Value objects: `record OrderId(int Value)`                |
+| **Long parameter lists**     | Methods with 5+ parameters      | Data Transfer Object (DTO)                                |
+| **Flag parameters**          | `bool includeDeleted`           | Separate methods: `GetActiveAsync()`, `GetDeletedAsync()` |
+| **Comments instead of code** | Opaque logic + comments         | Refactor to self-documenting code                         |
 
 ---
 
@@ -202,21 +202,21 @@ public sealed class StockService(IStockStore store, ILogger<StockService> logger
 
 ### SOLID
 
-| Principle | Summary |
-|---|---|
-| **S** — Single Responsibility | One class, one reason to change |
-| **O** — Open/Closed | Open for extension, closed for modification |
-| **L** — Liskov Substitution | Subclasses must be replaceable by their bases |
+| Principle                     | Summary                                               |
+| ----------------------------- | ----------------------------------------------------- |
+| **S** — Single Responsibility | One class, one reason to change                       |
+| **O** — Open/Closed           | Open for extension, closed for modification           |
+| **L** — Liskov Substitution   | Subclasses must be replaceable by their bases         |
 | **I** — Interface Segregation | Small, specific interfaces; no forced implementations |
-| **D** — Dependency Inversion | Depend on abstractions, not concretions |
+| **D** — Dependency Inversion  | Depend on abstractions, not concretions               |
 
 ### DRY, KISS, YAGNI
 
-| Principle | Description |
-|---|---|
-| **DRY** | Each piece of knowledge has one unambiguous representation |
-| **KISS** | Prefer the simplest solution that works |
-| **YAGNI** | Do not add functionality until needed |
+| Principle | Description                                                |
+| --------- | ---------------------------------------------------------- |
+| **DRY**   | Each piece of knowledge has one unambiguous representation |
+| **KISS**  | Prefer the simplest solution that works                    |
+| **YAGNI** | Do not add functionality until needed                      |
 
 ---
 

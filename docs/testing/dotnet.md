@@ -226,11 +226,11 @@ The workflow uploads the coverage report to Codecov after the test step. Codecov
 
 Coverage is a quality gate, not an absolute objective. Suggested minimums per module:
 
-| Metric | Minimum |
-|---|---|
-| Line coverage | >= 80% |
-| Branch coverage | >= 70% |
-| CRAP score | <= 30 |
+| Metric          | Minimum |
+| --------------- | ------- |
+| Line coverage   | >= 80%  |
+| Branch coverage | >= 70%  |
+| CRAP score      | <= 30   |
 
 - Track critical paths: validation, invariants, error handling, security decisions.
 - Do not chase 100%. Prefer meaningful assertions over line-count inflation.
