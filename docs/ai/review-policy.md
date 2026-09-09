@@ -1,109 +1,113 @@
-# Política de Revisión Humana — Cambios generados por IA
+# Human Review Policy — AI-Generated Changes
 
-Todo código generado o modificado por un agente de IA **requiere revisión y aprobación humana** antes de ser mergeado a ramas protegidas.
-
----
-
-## Principio rector
-
-> Los agentes IA son asistentes, no decision-makers. Un humano es siempre responsable del código que entra al repositorio.
+Any code generated or modified by an AI agent **requires human review and approval** before being
+merged to protected branches.
 
 ---
 
-## Proceso obligatorio
+## Governing principle
+
+> AI agents are assistants, not decision-makers. A human is always responsible for the code that
+> enters the repository.
+
+---
+
+## Mandatory process
 
 ```text
-Tarea solicitada al agente
+Task requested from the agent
         │
         ▼
-Agente genera cambios en rama `copilot/*`
+Agent generates changes on a working branch
+with a semantic prefix (feature/, fix/, docs/, ...)
         │
         ▼
-PR abierto automáticamente o por el solicitante
+PR opened by the agent or the requester
         │
         ▼
-CI ejecuta todos los checks automáticos
+CI runs all automated checks
         │
         ▼
-Revisión humana obligatoria ──► Observaciones ──► Agente itera
+Mandatory human review ──► observations ──► agent iterates
         │
-        ▼ (aprobado)
-Merge a rama base
+        ▼ (approved)
+Merge to base branch
         │
         ▼
-Registrar en historial de tareas IA
+Log the task in the repository AI task log
 ```
 
 ---
 
-## Criterios de revisión por categoría
+## Review criteria by category
 
-### Cambios de lógica de negocio
+### Business logic changes
 
-- [ ] ¿La lógica implementada es correcta con respecto al requerimiento?
-- [ ] ¿Se manejan los edge cases relevantes?
-- [ ] ¿Hay tests que cubran el comportamiento nuevo?
-- [ ] ¿La implementación es coherente con el diseño existente?
+- [ ] Is the implemented logic correct with respect to the requirement?
+- [ ] Are the relevant edge cases handled?
+- [ ] Are there tests covering the new behavior?
+- [ ] Is the implementation consistent with the existing design?
 
-### Cambios de arquitectura
+### Architecture changes
 
-- [ ] ¿Se respetan las capas de Clean Architecture?
-- [ ] ¿Las dependencias van en la dirección correcta?
-- [ ] ¿No se introdujeron dependencias circulares?
+- [ ] Are the Clean Architecture layers respected?
+- [ ] Do dependencies point in the correct direction?
+- [ ] Were no circular dependencies introduced?
 
-### Cambios en CI/CD o configuración
+### CI/CD or configuration changes
 
-- [ ] ¿Se entiende el efecto de cada cambio en el workflow?
-- [ ] ¿No se redujo el nivel de verificación del pipeline?
-- [ ] ¿No se exponen secrets o variables sensibles?
+- [ ] Is the effect of each workflow change understood?
+- [ ] Was the level of verification of the pipeline not reduced?
+- [ ] Are no secrets or sensitive variables exposed?
 
-### Cambios en dependencias
+### Dependency changes
 
-- [ ] ¿La nueva dependencia está justificada?
-- [ ] ¿Se verificó que no tenga CVEs conocidas?
-- [ ] ¿La versión está fijada apropiadamente?
+- [ ] Is the new dependency justified?
+- [ ] Was it verified it has no known CVEs?
+- [ ] Is the version appropriately pinned?
 
-### Seguridad (obligatorio para cualquier cambio)
+### Security (mandatory for any change)
 
-- [ ] ¿No hay secretos, tokens ni credenciales hardcodeadas?
-- [ ] ¿Se validan todos los inputs externos?
-- [ ] ¿No se introdujeron vulnerabilidades conocidas?
-
----
-
-## Aprobaciones requeridas
-
-| Tipo de cambio                               | Aprobaciones mínimas        |
-| -------------------------------------------- | --------------------------- |
-| Documentación / comentarios                  | 1                           |
-| Tests, CI                                    | 1                           |
-| Código de aplicación                         | 1                           |
-| Cambios de arquitectura o diseño             | 2                           |
-| Cambios en seguridad o autenticación         | 2 (uno debe ser maintainer) |
-| Cambios en workflows compartidos (`.github`) | 2 maintainers               |
+- [ ] No secrets, tokens, or credentials hardcoded?
+- [ ] Are all external inputs validated?
+- [ ] Were no known vulnerabilities introduced?
 
 ---
 
-## Qué debe agregar el revisor al aprobar
+## Required approvals
 
-En el comentario de aprobación o en la descripción del merge, el revisor debe confirmar:
-
-- Que revisó el diff completo.
-- Que los criterios aplicables de la lista anterior fueron verificados.
-- Si hay alguna deuda técnica o seguimiento necesario, crear un issue vinculado.
-
----
-
-## Cuándo rechazar un PR generado por IA
-
-- El código no sigue las convenciones de la organización.
-- Los tests no pasan o no existen para el comportamiento nuevo.
-- El alcance del cambio excede lo solicitado (el agente modificó más de lo pedido).
-- Hay dudas razonables sobre seguridad que no fueron resueltas.
-- La lógica es correcta pero el diseño no es mantenible.
+| Change type | Minimum approvals |
+|---|---|
+| Documentation / comments | 1 |
+| Tests, CI | 1 |
+| Application code | 1 |
+| Architecture or design changes | 2 |
+| Security or authentication changes | 2 (one must be a maintainer) |
+| Shared workflow changes (`.github`) | 2 maintainers |
 
 ---
 
-## Registro de la revisión
+## What the reviewer must add when approving
 
-Después de cada merge de cambios generados por IA, actualizar el [historial de tareas IA](./ai-task-log-template.md) del repositorio con el resultado de la revisión.
+In the approval comment or merge description, the reviewer must confirm:
+
+- That they reviewed the full diff.
+- That the applicable criteria from the list above were verified.
+- If there is technical debt or necessary follow-up, create a linked issue.
+
+---
+
+## When to reject an AI-generated PR
+
+- The code does not follow organization conventions.
+- Tests do not pass or do not exist for the new behavior.
+- The change exceeds the requested scope (the agent modified more than asked).
+- There are reasonable security doubts that were not resolved.
+- The logic is correct but the design is not maintainable.
+
+---
+
+## Logging the review
+
+After merging any AI-generated changes, update the repository's [AI task log](./ai-task-log-template.md)
+with the review result.
