@@ -1,122 +1,144 @@
-# Checklist de Onboarding de Repositorios
+# Repository Onboarding Checklist
 
-Este checklist debe completarse para todos los repositorios de la organización: tanto nuevos como existentes que aún no cumplan con los estándares.
+This checklist applies to every repository in the organization: new ones and existing ones that do
+not yet meet the standards.
 
 ---
 
-## Repositorios nuevos
+## New repositories
 
-Completar **antes del primer commit real de funcionalidad**.
+Complete **before the first real functional commit**.
 
-### Estructura básica
+### Basic structure
 
-- [ ] `README.md` en la raíz con descripción, arquitectura mínima y guía para contribuidores.
-- [ ] `.gitignore` apropiado para el stack.
-- [ ] `.editorconfig` copiado desde `hamekoz/.github` o ajustado para el stack.
-- [ ] `CHANGELOG.md` con entrada inicial.
-- [ ] Definir `main` como rama por defecto.
+- [ ] `README.md` at the root with description, minimal architecture, and contributor guide.
+- [ ] Appropriate `.gitignore` for the stack.
+- [ ] `.editorconfig` copied from `hamekoz/.github` or adjusted for the stack.
+- [ ] `AGENTS.md` at the root with the stub pointing to the organization criterion (see
+  [AGENTS.md](../ai/AGENTS.md#repository-guidance)).
+- [ ] `CHANGELOG.md` with an initial entry.
+- [ ] Set `main` as the default branch.
 
-### Entorno de desarrollo
+### Development environment
 
-- [ ] `.vscode/settings.json` con configuración base del workspace (ver [guía VS Code](../tooling/vscode.md)).
-- [ ] `.vscode/extensions.json` con extensiones recomendadas para el stack.
-- [ ] (Recomendado) `.devcontainer/devcontainer.json` con el entorno de desarrollo reproducible (ver [guía Dev Containers](../tooling/devcontainer.md)).
-- [ ] `.env.example` con las variables de entorno requeridas (sin valores reales) si el proyecto usa variables de entorno.
+- [ ] `.vscode/settings.json` with the base workspace configuration (see
+  [VS Code guide](../tooling/vscode.md)).
+- [ ] `.vscode/extensions.json` with recommended extensions for the stack.
+- [ ] (Recommended) `.devcontainer/devcontainer.json` with a reproducible development environment
+  (see [Dev Containers guide](../tooling/devcontainer.md)).
+- [ ] `.env.example` with the required environment variables (no real values) if the project uses
+  environment variables.
 
-### Calidad de código
+### Code quality
 
-- [ ] Configurar herramienta de lint/formato para el stack:
-  - .NET: `global.json` + `dotnet format` configurado.
-  - Ruby: `.rubocop.yml` + `RuboCop` en Gemfile.
-- [ ] Verificar que el lint pasa en verde desde el inicio.
+- [ ] Configure the lint/format tool for the stack:
+  - .NET: `global.json` + `dotnet format` configured (see
+    [Code Format .NET](../code-format/dotnet.md)).
+  - Ruby: `.rubocop.yml` + RuboCop in the Gemfile.
+- [ ] Verify lint passes green from the start.
+
+### Testing
+
+- [ ] New projects: Microsoft Testing Platform stack (`xunit.v3` + `coverlet.MTP`,
+  `<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>`, and
+  `"test": { "runner": "Microsoft.Testing.Platform" }` in `global.json`).
+- [ ] Legacy projects: keep VSTest (`xunit` 2.9.x + `coverlet.collector`).
+- [ ] At least one example test (even a "hello world") passing in CI.
+- [ ] Coverage configured in CI with the criterion thresholds (line ≥ 80%, branch ≥ 70%).
+- [ ] The shared `dotnet.yml` workflow is consumed with the `test_arguments` input matching the
+  project runner (see [Testing .NET](../testing/dotnet.md#ci--shared-workflow)).
 
 ### CI/CD
 
-- [ ] `.github/workflows/ci.yml` configurado con al menos:
-  - Conventional Commits check en PRs.
-  - Verificación de formato.
+- [ ] `.github/workflows/ci.yml` configured with at least:
+  - Conventional Commits check on PRs.
+  - Format verification.
   - Build + tests.
-- [ ] Protección de ramas configurada en GitHub para `main` y `develop`:
+- [ ] Branch protection configured in GitHub for `main` and `develop`:
   - Require PR before merging.
   - Require status checks to pass.
   - Include administrators.
-- [ ] Al menos un test de ejemplo (aunque sea un "hello world") pasando en CI.
+- [ ] At least one example test (even a "hello world") passing in CI.
 
-### Versionado
+### Versioning
 
-- [ ] Estrategia de versionado definida (GitVersion para .NET, o manual con tags).
-- [ ] Primer tag de versión creado: `v0.1.0`.
+- [ ] Versioning strategy defined (GitVersion for .NET, or manual with tags).
+- [ ] First version tag created: `v0.1.0`.
 
-### Seguridad
+### Security
 
-- [ ] Confirmado que no hay secrets ni credenciales en el código.
-- [ ] Dependabot o Renovate configurado para actualizaciones automáticas.
-- [ ] `.github/renovate.json` o `.github/dependabot.yml` presente.
+- [ ] Confirmed that no secrets or credentials are present in the code.
+- [ ] Dependabot or Renovate configured for automatic updates.
+- [ ] `.github/renovate.json` or `.github/dependabot.yml` present.
 
-### Documentación del equipo
+### Team documentation
 
-- [ ] Dueño del repositorio documentado en `README.md`.
-- [ ] Contacto o equipo responsable identificado.
+- [ ] Repository owner documented in `README.md`.
+- [ ] Responsible team or contact identified.
 
-### Uso de IA (si aplica)
+### AI usage (if applicable)
 
-- [ ] Crear `docs/ai/ai-task-log.md` si el repositorio usará agentes IA.
-- [ ] Revisar que `.github/copilot-instructions.md` de la organización cubre el contexto del proyecto (o agregar uno local con especificidades del proyecto).
-
----
-
-## Repositorios existentes
-
-Para repositorios que ya tienen historia pero no cumplen todos los estándares.
-
-### Prioridad alta (semana 1)
-
-- [ ] CI pipeline básico funcionando (build + test).
-- [ ] Branch protection en `main`.
-- [ ] No hay secrets expuestos en el historial de commits.
-
-### Prioridad media (mes 1)
-
-- [ ] Conventional Commits activo en nuevos PRs.
-- [ ] Lint/formato verificado en CI.
-- [ ] `README.md` actualizado con descripción y guía básica.
-- [ ] Dependabot o Renovate activado.
-
-### Prioridad baja (trimestre 1)
-
-- [ ] CHANGELOG creado y actualizado.
-- [ ] Cobertura de tests con reporte en CI.
-- [ ] Versionado semántico con tags.
-- [ ] Arquitectura documentada en `README.md` o `docs/`.
+- [ ] Create `AGENTS.md` at the root with the stub pointing to the organization criterion (see
+  [AGENTS.md](../ai/AGENTS.md)).
+- [ ] Create `docs/ai/ai-task-log.md` if the repository will use AI agents.
+- [ ] Review that the organization `.github/copilot-instructions.md` covers the project context (or
+  add a local one with project specifics).
 
 ---
 
-## Matriz de adopción por stack
+## Existing repositories
 
-| Herramienta/Práctica      | .NET | Ruby on Rails | Obligatorio |
-| ------------------------- | ---- | ------------- | ----------- |
-| Conventional Commits      | ✅   | ✅            | Sí          |
-| CI en cada PR             | ✅   | ✅            | Sí          |
-| Branch protection         | ✅   | ✅            | Sí          |
-| dotnet format / RuboCop   | ✅   | ✅            | Sí          |
-| Tests automáticos         | ✅   | ✅            | Sí          |
-| Semantic Versioning       | ✅   | ✅            | Sí          |
-| `.vscode/settings.json`   | ✅   | ✅            | Recomendado |
-| `.vscode/extensions.json` | ✅   | ✅            | Recomendado |
-| `.devcontainer/`          | ✅   | ✅            | Recomendado |
-| `.env.example`            | ✅   | ✅            | Recomendado |
-| Codecov / cobertura       | ✅   | ✅            | Recomendado |
-| Brakeman (security)       | N/A  | ✅            | Sí (Rails)  |
-| bundler-audit             | N/A  | ✅            | Sí (Rails)  |
-| Dependabot/Renovate       | ✅   | ✅            | Recomendado |
-| CHANGELOG.md              | ✅   | ✅            | Recomendado |
-| docs/ai/ai-task-log.md    | ✅   | ✅            | Si usa IA   |
+For repositories that already have history but do not meet all the standards.
+
+### High priority (week 1)
+
+- [ ] Basic CI pipeline working (build + test).
+- [ ] Branch protection on `main`.
+- [ ] No secrets exposed in the commit history.
+
+### Medium priority (month 1)
+
+- [ ] Conventional Commits active on new PRs.
+- [ ] Lint/format verified in CI.
+- [ ] `README.md` updated with description and basic guide.
+- [ ] Dependabot or Renovate enabled.
+
+### Low priority (quarter 1)
+
+- [ ] CHANGELOG created and updated.
+- [ ] Test coverage with report in CI.
+- [ ] Semantic versioning with tags.
+- [ ] Architecture documented in `README.md` or `docs/`.
 
 ---
 
-## Cómo referenciar los workflows de la organización
+## Adoption matrix by stack
 
-Para usar los workflows compartidos en un repositorio:
+| Tool/Practice              | .NET | Ruby on Rails | Required   |
+| -------------------------- | ---- | ------------- | ---------- |
+| Conventional Commits       | ✅   | ✅            | Yes        |
+| CI on every PR             | ✅   | ✅            | Yes        |
+| Branch protection          | ✅   | ✅            | Yes        |
+| dotnet format / RuboCop    | ✅   | ✅            | Yes        |
+| Automated tests            | ✅   | ✅            | Yes        |
+| Semantic Versioning        | ✅   | ✅            | Yes        |
+| `.vscode/settings.json`    | ✅   | ✅            | Recommended |
+| `.vscode/extensions.json`  | ✅   | ✅            | Recommended |
+| `.devcontainer/`           | ✅   | ✅            | Recommended |
+| `.env.example`             | ✅   | ✅            | Recommended |
+| Codecov / coverage         | ✅   | ✅            | Recommended |
+| `AGENTS.md` (org stub)     | ✅   | ✅            | Yes        |
+| Brakeman (security)        | N/A  | ✅            | Yes (Rails) |
+| bundler-audit              | N/A  | ✅            | Yes (Rails) |
+| Dependabot/Renovate        | ✅   | ✅            | Recommended |
+| CHANGELOG.md               | ✅   | ✅            | Recommended |
+| docs/ai/ai-task-log.md     | ✅   | ✅            | If AI used |
+
+---
+
+## How to reference organization workflows
+
+To use the shared workflows in a repository:
 
 ```yaml
 # .github/workflows/ci.yml
@@ -130,4 +152,4 @@ jobs:
     secrets: inherit
 ```
 
-Ver más detalles en [CI/CD — Guía general](../ci-cd/README.md).
+See more details in [CI/CD — General guide](../ci-cd/README.md).
