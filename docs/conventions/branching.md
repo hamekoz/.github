@@ -1,29 +1,31 @@
-# Estrategia de Branching
+# Branching Strategy
 
-## Ramas principales
+## Main branches
 
-| Rama      | Propósito                                               | Ambiente destino |
-| --------- | ------------------------------------------------------- | ---------------- |
-| `main`    | Código en producción. Siempre estable y deployable.     | Producción       |
-| `develop` | Integración de features. Base para branches de trabajo. | Integración / QA |
+| Branch | Purpose | Target environment |
+|---|---|---|
+| `main` | Production code. Always stable and deployable. | Production |
+| `develop` | Feature integration. Base for working branches. | Integration / QA |
 
-Ambas ramas están **protegidas**: no se puede hacer push directo; todo cambio entra por Pull Request.
+Both branches are **protected**: no direct push; every change enters through a Pull Request.
 
-## Ramas de trabajo
+## Working branches
 
-Las ramas de trabajo se crean desde `develop` y se eliminan al hacer merge:
+Working branches are created from `develop` and deleted after merging:
 
-| Prefijo     | Propósito                                    | Ejemplo                            |
-| ----------- | -------------------------------------------- | ---------------------------------- |
-| `feature/`  | Nueva funcionalidad                          | `feature/add-oauth-login`          |
-| `fix/`      | Corrección de bug                            | `fix/null-reference-on-checkout`   |
-| `hotfix/`   | Corrección urgente en producción             | `hotfix/critical-auth-bypass`      |
-| `chore/`    | Mantenimiento, deps, infra                   | `chore/update-sdk-to-8.0`          |
-| `docs/`     | Solo documentación                           | `docs/update-api-guide`            |
-| `refactor/` | Refactorización sin cambio de comportamiento | `refactor/extract-payment-service` |
-| `copilot/`  | Ramas generadas por agentes IA               | `copilot/add-logging-middleware`   |
+| Prefix | Purpose | Example |
+|---|---|---|
+| `feature/` | New functionality | `feature/add-oauth-login` |
+| `fix/` | Bug fix | `fix/null-reference-on-checkout` |
+| `hotfix/` | Urgent production fix | `hotfix/critical-auth-bypass` |
+| `chore/` | Maintenance, deps, infra | `chore/update-sdks` |
+| `docs/` | Documentation only | `docs/update-api-guide` |
+| `refactor/` | Refactoring without behavior change | `refactor/extract-payment-service` |
 
-## Flujo de trabajo estándar
+**AI agents use the same semantic prefixes** based on the type of change. There is no
+agent-specific prefix.
+
+## Standard workflow
 
 ```text
 main ◄─── develop ◄─── feature/my-feature
@@ -31,40 +33,41 @@ main ◄─── develop ◄─── feature/my-feature
            └──── fix/some-bug
 ```
 
-1. Crear rama desde `develop`: `git checkout -b feature/my-feature develop`
-2. Desarrollar y commitear con Conventional Commits.
-3. Abrir Pull Request hacia `develop`.
-4. CI pasa (conventional commits + format + build + tests).
-5. Code review aprobado.
-6. Merge a `develop` (squash merge recomendado).
-7. Periódicamente, `develop` → `main` via PR con tag de versión.
+1. Create the branch from `develop`: `git checkout -b feature/my-feature develop`
+2. Develop and commit with Conventional Commits.
+3. Open a Pull Request toward `develop`.
+4. CI passes (conventional commits + format + build + tests).
+5. Code review approved (mandatory for AI-generated changes, see
+   [review policy](../ai/review-policy.md)).
+6. Merge to `develop` (squash merge recommended).
+7. Periodically merge `develop` → `main` via PR with a version tag.
 
-## Hotfixes en producción
+## Hotfixes in production
 
-Un hotfix crítico que no puede esperar el ciclo normal:
+A critical fix that cannot wait for the normal cycle:
 
-1. Crear rama desde `main`: `git checkout -b hotfix/critical-fix main`
-2. Aplicar fix y tests.
-3. Merge a `main` con PR + CI obligatorio.
-4. Tag de versión con incremento PATCH.
-5. Merge de vuelta a `develop` para sincronizar.
+1. Create the branch from `main`: `git checkout -b hotfix/critical-fix main`
+2. Apply the fix and tests.
+3. Merge to `main` with PR + mandatory CI.
+4. Bump PATCH version with a tag.
+5. Merge back to `develop` to synchronize.
 
-## Ambientes
+## Environments
 
-| Ambiente    | Rama                     | Trigger de deploy         |
-| ----------- | ------------------------ | ------------------------- |
-| Integración | `develop`                | Push a `develop`          |
-| Staging/UAT | `uat` o `stg` (opcional) | Push o tag de pre-release |
-| Producción  | `main`                   | Tag `v*.*.*` en `main`    |
+| Environment | Branch | Deploy trigger |
+|---|---|---|
+| Integration | `develop` | Push to `develop` |
+| Staging/UAT | `uat` or `stg` (optional) | Push or pre-release tag |
+| Production | `main` | Tag `v*.*.*` on `main` |
 
-## Reglas de protección de ramas
+## Branch protection rules
 
-Configurar en GitHub las siguientes branch protection rules para `main` y `develop`:
+Configure these GitHub branch protection rules for `main` and `develop`:
 
 - ✅ Require pull request before merging
 - ✅ Require status checks to pass (CI workflow)
 - ✅ Require branches to be up to date before merging
-- ✅ Require linear history (opcional, recomendado)
+- ✅ Require linear history (recommended)
 - ✅ Include administrators
 - ❌ Allow force pushes
 - ❌ Allow deletions
