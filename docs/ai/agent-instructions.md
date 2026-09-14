@@ -2,6 +2,9 @@
 
 Este archivo define el contexto, las restricciones y el comportamiento esperado para cualquier agente de IA (GitHub Copilot, Claude, ChatGPT, etc.) que trabaje en repositorios de la organización Hamekoz.
 
+> Fuente de verdad única del criterio: [`docs/ai/AGENTS.md`](./AGENTS.md) (inglés). Los
+> repositorios referencian esa fuente con un stub en su `AGENTS.md` en lugar de duplicarla.
+
 ---
 
 ## Contexto de la organización
@@ -26,7 +29,9 @@ Todos los repositorios comparten convenciones centralizadas en `hamekoz/.github`
 
 ### Branching
 
-- Las ramas de trabajo generadas por agentes usan el prefijo `copilot/`.
+- Las ramas de trabajo generadas por agentes usan los mismos prefijos semánticos que los humanos,
+  según el tipo de cambio: `feature/`, `fix/`, `chore/`, `docs/`, `refactor/`, `hotfix/`.
+- No existe un prefijo específico para agentes (ver [Estrategia de branching](../conventions/branching.md)).
 - Nunca hacer push directo a `main` o `develop`.
 
 ### Versionado

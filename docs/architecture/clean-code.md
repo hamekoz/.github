@@ -1,134 +1,232 @@
 # Clean Code
 
-Referencia principal: _Clean Code_ — Robert C. Martin.
+Main reference: _Clean Code_ — Robert C. Martin.
 
-Este documento define los criterios de código limpio aplicables a todos los proyectos de la organización, independientemente del lenguaje.
-
----
-
-## Nombres
-
-### Obligatorio — Nombres
-
-- Los nombres deben revelar la intención: `getUserById` en lugar de `getU` o `process`.
-- Evitar abreviaciones crípticas: `customerAccount` no `ca` o `custAcc`.
-- Evitar palabras genéricas sin significado: `Manager`, `Processor`, `Handler`, `Helper` a solas.
-- Los booleanos se nombran como afirmaciones: `isActive`, `hasPermission`, `canDelete`.
-- Las colecciones en plural: `orders`, `userList`.
-
-### Recomendado — Nombres
-
-- Los nombres de clases son sustantivos; los de métodos son verbos.
+This document defines the clean-code criteria for all organization projects, in every language.
+The C#-specific examples reflect the practices promoted by the `CartaUniversal` reference project.
 
 ---
 
-## Funciones / Métodos
+## Names
 
-### Obligatorio — Funciones
+### Required — Names
 
-- **Una sola responsabilidad**: cada función hace una sola cosa y la hace bien.
-- **Pequeñas**: preferiblemente menos de 20 líneas. Si necesita scroll, probablemente hace demasiado.
-- **Un nivel de abstracción por función**: no mezclar lógica de alto nivel con detalles de implementación en la misma función.
-- **Sin efectos secundarios ocultos**: si una función modifica estado externo, debe ser evidente en su nombre o documentación.
-- **Máximo 3 parámetros**; si necesita más, considerar un objeto de parámetros o refactorizar.
+- Names must reveal intent: `GetUserByIdAsync` instead of `GetU` or `Process`.
+- No cryptic abbreviations: `customerAccount`, not `ca` or `custAcc`.
+- No generic words without meaning: `Manager`, `Processor`, `Handler`, `Helper` alone.
+- Booleans are named as statements: `isActive`, `hasPermission`, `canDelete`.
+- Collections are plural: `orders`, `activeUsers`.
 
-### Recomendado — Funciones
+### Required — Variables named by content, not by type
 
-- Evitar parámetros booleanos que cambian el comportamiento; preferir dos funciones separadas.
+**Goal**: code reads like prose without inspecting the assignment.
 
----
+```csharp
+// ❌ names describe type/technology
+var returnListFsharp = TzolkinDate.GetNextList(5, tzolkinDate, DateTime.UtcNow.Date);
+var strVal = "user@example.com";
+var tmpList = users.Where(u => u.IsActive).ToList();
 
-## Comentarios
+// ✅ names describe content
+var kinBirthdayList = TzolkinDate.GetNextList(5, tzolkinDate, DateTime.UtcNow.Date);
+var userEmail = "user@example.com";
+var activeUsers = users.Where(u => u.IsActive).ToList();
+```
 
-### Obligatorio — Comentarios
+Suffixes like `Dto`, `Temp`, `List`, `Str` only appear when they genuinely aid comprehension.
+Do not encode the implementation detail (framework, technology, collection kind) into the name.
 
-- **El código debe explicarse a sí mismo**; los comentarios son un último recurso.
-- No comentar código obsoleto: eliminarlo. El control de versiones guarda el historial.
-- No comentar lo obvio: `i++; // incrementa i`.
+### Recommended — Names
 
-### Permitido y valioso
-
-- Comentarios de advertencia sobre consecuencias no obvias.
-- Comentarios `TODO` con contexto y responsable: `// TODO(juan): remove after migrating to v2`.
-- Documentación de API pública (XML docs en .NET, RDoc en Ruby).
-- Explicación de algoritmos complejos o decisiones de diseño no evidentes.
-
----
-
-## Formato y estructura
-
-Ver [reglas de formato por lenguaje](../code-format/README.md).
-
-### Obligatorio — Formato
-
-- Consistencia en todo el archivo y el proyecto.
-- El código relacionado va junto; el no relacionado, separado.
-- Líneas cortas: máximo 110 caracteres.
+- Class names are nouns; method names are verbs.
 
 ---
 
-## Manejo de errores
+## Functions / Methods
 
-### Obligatorio — Manejo de errores
+### Required — Functions
 
-- **Nunca ignorar excepciones en silencio** (`catch { }` vacío).
-- Los errores deben contener contexto suficiente para diagnosticar el problema.
-- Preferir excepciones sobre códigos de error de retorno.
-- No usar excepciones para flujo de control normal.
+- **Single responsibility**: one function does one thing, well.
+- **Small**: preferably under 20 lines. If it needs scrolling, it probably does too much.
+- **One level of abstraction per function**: do not mix high-level logic with low-level details.
+- **No hidden side effects**: if a function mutates external state, it must be obvious.
+- **Max 3 parameters**; more suggests a parameter object or a refactor.
+- **Small methods with delegated responsibilities**: extract helpers instead of god functions.
 
-### Recomendado — Manejo de errores
+### Recommended — Functions
 
-- Crear tipos de excepción específicos del dominio.
-- Manejar los errores en el nivel más apropiado de la aplicación (no atrapar y relanzar sin agregar contexto).
+- Avoid boolean parameters that change behavior; prefer two separate functions.
 
----
+### Required — Explicit return types over overloaded inference
 
-## Tests
-
-### Obligatorio — Tests
-
-- **F.I.R.S.T.**: Fast, Independent, Repeatable, Self-validating, Timely.
-- Un concepto por test.
-- Nombres descriptivos: `Should_ReturnError_When_EmailIsInvalid`.
-- Los tests no deben depender de orden de ejecución ni de estado compartido mutable.
-
-### Recomendado — Tests
-
-- Cobertura de código como guía, no como objetivo absoluto. Priorizar calidad sobre porcentaje.
-- Seguir el patrón Arrange / Act / Assert.
+Prefer `record`/class return types over tuples when the result has domain meaning.
 
 ---
 
-## Principios SOLID (resumen)
+## Comments
 
-| Principio                     | Descripción resumida                                                       |
-| ----------------------------- | -------------------------------------------------------------------------- |
-| **S** — Single Responsibility | Una clase, una razón para cambiar                                          |
-| **O** — Open/Closed           | Abierta para extensión, cerrada para modificación                          |
-| **L** — Liskov Substitution   | Las subclases deben ser intercambiables por sus bases                      |
-| **I** — Interface Segregation | Interfaces pequeñas y específicas; no forzar implementaciones innecesarias |
-| **D** — Dependency Inversion  | Depender de abstracciones, no de implementaciones concretas                |
+### Required — Comments
 
----
+- **Code must explain itself**; comments are a last resort.
+- Do not comment out obsolete code — delete it.
+- Do not comment the obvious: `i++; // increment i`.
 
-## DRY, KISS, YAGNI
+### Allowed and valuable
 
-| Principio                           | Descripción                                                                 |
-| ----------------------------------- | --------------------------------------------------------------------------- |
-| **DRY** (Don't Repeat Yourself)     | Cada pieza de conocimiento debe tener una representación única y no ambigua |
-| **KISS** (Keep It Simple, Stupid)   | Preferir la solución más simple que resuelva el problema                    |
-| **YAGNI** (You Ain't Gonna Need It) | No agregar funcionalidad hasta que sea necesaria                            |
+- Warning comments about non-obvious consequences.
+- `TODO` comments with context and owner: `// TODO(juan): remove after migrating to v2`.
+- Public API documentation (XML docs in .NET).
+- Explanation of complex algorithms or non-evident design decisions.
 
 ---
 
-## Code review — criterios de aceptación
+## Format and structure
 
-Al revisar código, verificar:
+See [per-language format rules](../code-format/README.md).
 
-- [ ] El nombre de variables, métodos y clases es claro y consistente con el dominio.
-- [ ] Las funciones son pequeñas y tienen una sola responsabilidad.
-- [ ] No hay comentarios de código obsoleto ni código comentado.
-- [ ] Las excepciones se manejan correctamente.
-- [ ] Hay tests que cubren el comportamiento nuevo o modificado.
-- [ ] No hay duplicación evitable.
-- [ ] El código nuevo no introduce dependencias circulares.
+### Required — Format
+
+- Consistency across file and project.
+- Related code together; unrelated code separated.
+- Short lines: max 110 characters.
+
+---
+
+## Naming conventions (C#)
+
+| Element                        | Convention         | Example                               |
+| ------------------------------ | ------------------ | ------------------------------------- |
+| Classes / Methods / Properties | `PascalCase`       | `OrderService`, `GetOrderAsync`       |
+| Private fields                 | `_camelCase`       | `_logger`, `_repository`              |
+| Constants                      | `UPPER_SNAKE_CASE` | `MAX_STOCK_ITEMS`, `DEFAULT_TIMEZONE` |
+| Async methods                  | `Async` suffix     | `GetOrderAsync`                       |
+
+### Named arguments for clear intent
+
+When calling methods with constants, `null`, or types that need inference, use named parameters:
+
+```csharp
+// ❌ what do these values mean?
+var birthUtc = ToUtc(dateWithNoon, new TimeOnly(12, 0), DefaultTimeZoneId, null, null);
+
+// ✅ clear intent
+var birthUtc = ToUtc(
+    date: dateWithNoon,
+    timeOfBirth: new TimeOnly(hour: 12, minute: 0),
+    timeZoneId: DefaultTimeZoneId,
+    latitude: null,
+    longitude: null);
+```
+
+---
+
+## Error handling
+
+### Required — Error handling
+
+- **Never ignore exceptions silently** (`catch { }` empty is forbidden).
+- Errors must carry enough context to diagnose; log with `ILogger` using structured logging
+  before falling back.
+- Prefer exceptions over return error codes.
+- Do not use exceptions for normal control flow.
+
+```csharp
+catch (InvalidOperationException ex)
+{
+    _logger.LogWarning(ex, "Stock item {ItemId} not found", itemId);
+    throw; // or explicit fallback
+}
+```
+
+### Recommended — Error handling
+
+- Create domain-specific exception types.
+- Handle errors at the most appropriate layer (do not catch-and-rethrow without adding context).
+
+### Structured logging
+
+```csharp
+// ❌ string concatenation — not searchable
+_logger.LogInformation("User " + userId + " created chart for " + date);
+
+// ✅ structured parameters
+_logger.LogInformation("User {UserId} created chart for date {Date}", userId, date);
+```
+
+---
+
+## Async/Await
+
+- All async methods carry the `Async` suffix.
+- Never `.Result` or `.Wait()` (deadlock risk) — async all the way.
+- Propagate `CancellationToken` through the whole async chain.
+
+```csharp
+// ✅ correct
+var chart = await chartService.GetChartAsync(id);
+var isValid = await ValidateChartAsync(chart, cancellationToken);
+```
+
+---
+
+## Dependency injection
+
+- All service dependencies are injected through constructors (primary constructors preferred).
+- `ILogger<T>` is required in constructor signatures of service classes; never optional/null in
+  production code.
+- Never instantiate `new ConcreteService()` in business code.
+
+```csharp
+public sealed class StockService(IStockStore store, ILogger<StockService> logger) : IStockService
+{
+    // primary constructor parameters used directly; no redundant backing fields
+}
+```
+
+---
+
+## Anti-patterns to avoid
+
+| Anti-pattern                 | Problem                         | Solution                                                  |
+| ---------------------------- | ------------------------------- | --------------------------------------------------------- |
+| **Magic numbers/strings**    | Values without context          | Extract named constants                                   |
+| **God objects**              | Classes doing too much          | Split responsibilities                                    |
+| **Primitive obsession**      | `string`/`int` instead of types | Value objects: `record OrderId(int Value)`                |
+| **Long parameter lists**     | Methods with 5+ parameters      | Data Transfer Object (DTO)                                |
+| **Flag parameters**          | `bool includeDeleted`           | Separate methods: `GetActiveAsync()`, `GetDeletedAsync()` |
+| **Comments instead of code** | Opaque logic + comments         | Refactor to self-documenting code                         |
+
+---
+
+## Principles
+
+### SOLID
+
+| Principle                     | Summary                                               |
+| ----------------------------- | ----------------------------------------------------- |
+| **S** — Single Responsibility | One class, one reason to change                       |
+| **O** — Open/Closed           | Open for extension, closed for modification           |
+| **L** — Liskov Substitution   | Subclasses must be replaceable by their bases         |
+| **I** — Interface Segregation | Small, specific interfaces; no forced implementations |
+| **D** — Dependency Inversion  | Depend on abstractions, not concretions               |
+
+### DRY, KISS, YAGNI
+
+| Principle | Description                                                |
+| --------- | ---------------------------------------------------------- |
+| **DRY**   | Each piece of knowledge has one unambiguous representation |
+| **KISS**  | Prefer the simplest solution that works                    |
+| **YAGNI** | Do not add functionality until needed                      |
+
+---
+
+## Code review — acceptance criteria
+
+- [ ] Variable/method/class names are clear and consistent with the domain; variables are named
+      after their content, not their type.
+- [ ] Functions are small with a single responsibility.
+- [ ] No dead code, commented code, or empty `catch` blocks.
+- [ ] Exceptions are handled and logged with structured logging.
+- [ ] Tests cover new or modified behavior.
+- [ ] No avoidable duplication.
+- [ ] New code introduces no circular dependencies.

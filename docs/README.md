@@ -28,6 +28,13 @@ Este directorio es el **hub centralizado** de estándares, convenciones y polít
 | [Reglas comunes](./code-format/README.md)       | Reglas de formato aplicables a todos los stacks |
 | [.NET](./code-format/dotnet.md)                 | Convenciones específicas .NET / C#              |
 | [Ruby on Rails](./code-format/ruby-on-rails.md) | Convenciones específicas Ruby on Rails          |
+| [.editorconfig](./.editorconfig)                | Reglas de formato de la organización            |
+
+### Testing
+
+| Documento                   | Descripción                                   |
+| --------------------------- | --------------------------------------------- |
+| [.NET](./testing/dotnet.md) | Stack de testing (MTP/VSTest), cobertura y CI |
 
 ### CI/CD
 
@@ -41,9 +48,10 @@ Este directorio es el **hub centralizado** de estándares, convenciones y polít
 
 | Documento                                                   | Descripción                                             |
 | ----------------------------------------------------------- | ------------------------------------------------------- |
+| [AGENTS.md](./ai/AGENTS.md)                                 | Fuente única del criterio para agentes IA (inglés)      |
 | [Instrucciones para agentes IA](./ai/agent-instructions.md) | Política y contexto para Copilot y otros agentes        |
-| [Plantilla de tarea IA](./ai/task-template.md)              | Estructura estándar para solicitar trabajo a un agente  |
 | [Política de revisión](./ai/review-policy.md)               | Revisión humana obligatoria de cambios generados por IA |
+| [Plantilla de tarea IA](./ai/task-template.md)              | Estructura estándar para solicitar trabajo a un agente  |
 | [Plantilla de historial IA](./ai/ai-task-log-template.md)   | Formato de registro de tareas realizadas con IA         |
 
 ### Herramientas de desarrollo
@@ -65,6 +73,13 @@ Este directorio es el **hub centralizado** de estándares, convenciones y polít
 
 > **"Core común organizacional + anexos por stack."**
 > Las reglas del núcleo aplican a todos los proyectos. Las extensiones por stack (.NET, Rails, etc.) complementan sin contradecir.
+
+## Idioma de los documentos
+
+Los documentos de criterio se escriben en **inglés (canónico)** y se publican con una copia en
+**español** con sufijo `.es.md` en el mismo directorio (p. ej. `clean-code.md` + `clean-code.es.md`).
+Los archivos consumidos por agentes IA (`AGENTS.md`, `copilot-instructions.md`) se mantienen solo
+en inglés.
 
 ## Cómo contribuir a este hub
 

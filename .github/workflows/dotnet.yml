@@ -9,7 +9,7 @@ on:
         default: "ubuntu-latest"
         type: string
       test_arguments:
-        description: "Argumentos adicionales para el comando dotnet test (p.ej. parámetros de cobertura de código). Permite que cada repositorio que consume el workflow defina su propia configuración de cobertura."
+        description: "Argumentos adicionales para el comando dotnet test. El default cubre el runner VSTest legacy (collector de cobertura XPlat). Los proyectos nuevos con Microsoft Testing Platform deben sobrescribirlo con las opciones --coverlet (ver hamekoz/.github docs/testing/dotnet.md)."
         required: false
         default: '--collect:"XPlat Code Coverage"'
         type: string
@@ -34,6 +34,8 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
       - name: Test with dotnet
+        # test_arguments usa el runner por defecto VSTest legacy: --collect:"XPlat Code Coverage".
+        # Proyectos nuevos (MTP) sobrescriben el input con: --coverlet --coverlet-output-format cobertura --coverlet-output-format json
         run: dotnet test --no-build --configuration Release ${{ inputs.test_arguments }}
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.6.0
