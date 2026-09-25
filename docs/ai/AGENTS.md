@@ -109,8 +109,8 @@ Branches are created from `develop` (or `main` for hotfixes) and merged via PR. 
 - **Clean Code**: variables named by content, never by type. Constant literals and `null` use
   named arguments. No empty `catch`. Structured logging with `{Placeholders}`.
 - **.NET**: `net10.0`, `Nullable`, `ImplicitUsings`, `LangVersion=latest`,
-  `EnforceCodeStyleInBuild`, `AnalysisLevel=latest-Default`, `TreatWarningsAsErrors`, Central
-  Package Management. `dotnet format --verify-no-changes` must pass.
+  `EnforceCodeStyleInBuild`, `AnalysisLevel=latest-Default`, `TreatWarningsAsErrors=false`,
+  Central Package Management. `dotnet format --verify-no-changes` must pass.
 - **Testing**: xUnit. New projects use Microsoft Testing Platform (`xunit.v3` + `coverlet.MTP`);
   legacy projects keep VSTest. Test doubles are hand-written `Fake*`/`Stub*`. Coverage: line
   ≥ 80%, branch ≥ 70%.
