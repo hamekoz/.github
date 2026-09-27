@@ -23,10 +23,34 @@ jobs:
 
 1. Checkout con historial completo (`fetch-depth: 0`).
 2. Setup .NET con la versión de `global.json`.
-3. `dotnet format --verify-no-changes` — falla si el código no está formateado.
+3. `dotnet format --verify-no-changes` — falla si el código no está formateado. Personalizable vía el input `format_command`.
 4. `dotnet build --configuration Release` — falla si hay errores de compilación.
 5. `dotnet test --no-build --configuration Release --collect:"XPlat Code Coverage"`.
 6. Subir reporte de cobertura a Codecov.
+
+**Inputs:**
+
+- `format_command`: comando de verificación de formato. El default es `dotnet format --verify-no-changes`
+  (todas las capas: whitespace, style y analyzers). Los repositorios con código legacy y/o soluciones
+  grandes pueden limitar la capa de analizadores al código nuevo:
+
+```yaml
+jobs:
+  dotnet:
+    uses: hamekoz/.github/.github/workflows/dotnet.yml@main
+    secrets: inherit
+    with:
+      format_command: >-
+        dotnet format whitespace --verify-no-changes
+        && dotnet format style --verify-no-changes
+        && dotnet format analyzers --verify-no-changes
+        --include "src/**" --include "tests/**"
+```
+
+> Nota: el `--verify-no-changes` de la capa `analyzers` aplica, entre otros, el arreglo
+> `[Obsolete]` de Roslyn sobre código legacy que usa APIs obsoletas (p.ej. en .NET 10
+> `System.Data.SqlClient`). Por eso en repositorios legacy conviene scoping nuevo. Por el mismo
+> motivo, el código nuevo debe usar APIs no obsoletas en vez de depender de excepciones.
 
 ### 2. `continuous-delivery-nuget.yml` — Publicar paquetes NuGet
 
