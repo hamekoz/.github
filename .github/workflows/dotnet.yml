@@ -13,6 +13,11 @@ on:
         required: false
         default: '--collect:"XPlat Code Coverage"'
         type: string
+      format_command:
+        description: "Comando de verificación de formato. El default ejecuta dotnet format --verify-no-changes completo. Los repositorios con código legacy y/o soluciones grandes pueden limitar la capa de analizadores a código nuevo con --include o ejecutar solo capas whitespace/style (ver hamekoz/.github docs/ci-cd/dotnet.md)."
+        required: false
+        default: "dotnet format --verify-no-changes"
+        type: string
 
 jobs:
   format-build-test:
@@ -30,7 +35,7 @@ jobs:
         with:
           global-json-file: "global.json"
       - name: Verify code format
-        run: dotnet format --verify-no-changes
+        run: ${{ inputs.format_command }}
       - name: Build with dotnet
         run: dotnet build --configuration Release
       - name: Test with dotnet
