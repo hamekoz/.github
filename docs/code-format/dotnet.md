@@ -159,7 +159,7 @@ Recommended for every project (`Directory.Build.props`):
 
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <AnalysisLevel>latest-Default</AnalysisLevel>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
 
 </Project>
