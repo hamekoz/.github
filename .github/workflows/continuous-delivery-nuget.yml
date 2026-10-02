@@ -8,6 +8,15 @@ on:
         required: false
         default: "ubuntu-latest"
         type: string
+      publish-nuget-org:
+        description: "Publicar también en NuGet.org (default: true)"
+        required: false
+        default: true
+        type: boolean
+
+env:
+  HAMEKOZ_GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  Hamekoz_GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   github-packages:
@@ -58,6 +67,7 @@ jobs:
 
   nugetorg:
     name: Nuget to Nuget.org
+    if: ${{ inputs.publish-nuget-org }}
     runs-on: ${{ inputs.runner }}
     steps:
       - name: Checkout
