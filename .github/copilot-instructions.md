@@ -65,6 +65,21 @@ For the full organization criterion, read the org `AGENTS.md`:
 - Do not disable or bypass CI checks; do not modify org workflows without explicit justification.
 - Reusable org workflows live in `hamekoz/.github`.
 
+### Publishing Workflows
+
+The organization provides reusable workflows for automated publishing:
+
+**NuGet packages**:
+- `publish-nuget-to-github-packages.yml` — Publish to GitHub Packages
+- `publish-nuget-to-nuget-org.yml` — Publish to NuGet.org
+- Optional input `nuget-version` for manual versioning; defaults to GitVersion if not provided
+
+**Docker images**:
+- `publish-docker-image-to-github-packages.yml` — Publish to GitHub Container Registry
+- `publish-docker-image-to-dockerhub.yml` — Publish to Docker Hub
+
+See [`docs/workflows/publishing.md`](./docs/workflows/publishing.md) for examples and configuration.
+
 ## Process
 
 Before generating code:
