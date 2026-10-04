@@ -9,7 +9,7 @@ not yet meet the standards.
 
 Complete **before the first real functional commit**.
 
-### Basic structure
+## # Basic structure
 
 - [ ] `README.md` at the root with description, minimal architecture, and contributor guide.
 - [ ] Appropriate `.gitignore` for the stack.
@@ -19,7 +19,7 @@ Complete **before the first real functional commit**.
 - [ ] `CHANGELOG.md` with an initial entry.
 - [ ] Set `main` as the default branch.
 
-### Development environment
+## # Development environment
 
 - [ ] `.vscode/settings.json` with the base workspace configuration (see
       [VS Code guide](../tooling/vscode.md)).
@@ -29,7 +29,7 @@ Complete **before the first real functional commit**.
 - [ ] `.env.example` with the required environment variables (no real values) if the project uses
       environment variables.
 
-### Code quality
+## # Code quality
 
 - [ ] Configure the lint/format tool for the stack:
   - .NET: `global.json` + `dotnet format` configured (see
@@ -37,7 +37,7 @@ Complete **before the first real functional commit**.
   - Ruby: `.rubocop.yml` + RuboCop in the Gemfile.
 - [ ] Verify lint passes green from the start.
 
-### Testing
+## # Testing
 
 - [ ] New projects: Microsoft Testing Platform stack (`xunit.v3` + `coverlet.MTP`,
       `<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>`, and
@@ -48,7 +48,7 @@ Complete **before the first real functional commit**.
 - [ ] The shared `dotnet.yml` workflow is consumed with the `test_arguments` input matching the
       project runner (see [Testing .NET](../testing/dotnet.md#ci--shared-workflow)).
 
-### CI/CD
+## # CI/CD
 
 - [ ] `.github/workflows/ci.yml` configured with at least:
   - Conventional Commits check on PRs.
@@ -60,23 +60,23 @@ Complete **before the first real functional commit**.
   - Include administrators.
 - [ ] At least one example test (even a "hello world") passing in CI.
 
-### Versioning
+## # Versioning
 
 - [ ] Versioning strategy defined (GitVersion for .NET, or manual with tags).
 - [ ] First version tag created: `v0.1.0`.
 
-### Security
+## # Security
 
 - [ ] Confirmed that no secrets or credentials are present in the code.
 - [ ] Dependabot or Renovate configured for automatic updates.
 - [ ] `.github/renovate.json` or `.github/dependabot.yml` present.
 
-### Team documentation
+## # Team documentation
 
 - [ ] Repository owner documented in `README.md`.
 - [ ] Responsible team or contact identified.
 
-### AI usage (if applicable)
+## # AI usage (if applicable)
 
 - [ ] Create `AGENTS.md` at the root with the stub pointing to the organization criterion (see
       [AGENTS.md](../ai/AGENTS.md)).
@@ -90,20 +90,20 @@ Complete **before the first real functional commit**.
 
 For repositories that already have history but do not meet all the standards.
 
-### High priority (week 1)
+## # High priority (week 1)
 
 - [ ] Basic CI pipeline working (build + test).
 - [ ] Branch protection on `main`.
 - [ ] No secrets exposed in the commit history.
 
-### Medium priority (month 1)
+## # Medium priority (month 1)
 
 - [ ] Conventional Commits active on new PRs.
 - [ ] Lint/format verified in CI.
 - [ ] `README.md` updated with description and basic guide.
 - [ ] Dependabot or Renovate enabled.
 
-### Low priority (quarter 1)
+## # Low priority (quarter 1)
 
 - [ ] CHANGELOG created and updated.
 - [ ] Test coverage with report in CI.

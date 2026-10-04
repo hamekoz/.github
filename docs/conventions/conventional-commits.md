@@ -14,7 +14,7 @@ El cumplimiento se verifica automáticamente en cada Pull Request mediante el wo
 [optional footer(s)]
 ```
 
-### Tipos permitidos
+## # Tipos permitidos
 
 | Tipo       | Cuándo usarlo                                                          |
 | ---------- | ---------------------------------------------------------------------- |
@@ -30,13 +30,13 @@ El cumplimiento se verifica automáticamente en cada Pull Request mediante el wo
 | `chore`    | Tareas de mantenimiento que no encajan en los anteriores               |
 | `revert`   | Revertir un commit anterior                                            |
 
-### Scope (alcance)
+## # Scope (alcance)
 
 El scope es **opcional** pero recomendado. Debe identificar el módulo, servicio o componente afectado.
 
 Ejemplos: `api`, `auth`, `payments`, `worker`, `ui`, `infra`, `deps`.
 
-### Descripción
+## # Descripción
 
 - Usar modo imperativo, tiempo presente: "add feature", no "added feature".
 - No capitalizar la primera letra.
@@ -91,5 +91,5 @@ line-length=100
 Para correr el lint localmente antes de un push:
 
 ```sh
-./gitlint.sh
+. /gitlint.sh
 ```

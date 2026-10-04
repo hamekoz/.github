@@ -8,7 +8,7 @@ Ver la [guía general de CI/CD](./README.md) para el pipeline mínimo y los prin
 
 ## Workflows disponibles
 
-### 1. `dotnet.yml` — Integración Continua
+## # 1. `dotnet.yml` — Integración Continua
 
 Verifica formato, compila, ejecuta tests y reporta cobertura.
 
@@ -44,7 +44,7 @@ jobs:
         dotnet format whitespace --verify-no-changes
         && dotnet format style --verify-no-changes
         && dotnet format analyzers --verify-no-changes
-        --include "src/**" --include "tests/**"
+  - -include "src/**" --include "tests/**"
 ```
 
 > Nota: el `--verify-no-changes` de la capa `analyzers` aplica, entre otros, el arreglo
@@ -52,7 +52,7 @@ jobs:
 > `System.Data.SqlClient`). Por eso en repositorios legacy conviene scoping nuevo. Por el mismo
 > motivo, el código nuevo debe usar APIs no obsoletas en vez de depender de excepciones.
 
-### 2. `continuous-delivery-nuget.yml` — Publicar paquetes NuGet
+## # 2. `continuous-delivery-nuget.yml` — Publicar paquetes NuGet
 
 Versiona, empaqueta y publica en GitHub Packages y/o NuGet.org.
 
@@ -72,7 +72,7 @@ jobs:
 5. Publicar en GitHub Packages (con `GITHUB_TOKEN`).
 6. Publicar en NuGet.org (con `NUGET_API_KEY`).
 
-### 3. `continuous-delivery-dockerfile.yml` — Publicar imagen Docker
+## # 3. `continuous-delivery-dockerfile.yml` — Publicar imagen Docker
 
 Construye y publica imagen Docker en GHCR y/o Docker Hub.
 

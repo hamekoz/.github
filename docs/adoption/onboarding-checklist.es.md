@@ -8,7 +8,7 @@ Este checklist debe completarse para todos los repositorios de la organización:
 
 Completar **antes del primer commit real de funcionalidad**.
 
-### Estructura básica
+## # Estructura básica
 
 - [ ] `README.md` en la raíz con descripción, arquitectura mínima y guía para contribuidores.
 - [ ] `.gitignore` apropiado para el stack.
@@ -17,21 +17,21 @@ Completar **antes del primer commit real de funcionalidad**.
 - [ ] `CHANGELOG.md` con entrada inicial.
 - [ ] Definir `main` como rama por defecto.
 
-### Entorno de desarrollo
+## # Entorno de desarrollo
 
 - [ ] `.vscode/settings.json` con configuración base del workspace (ver [guía VS Code](../tooling/vscode.md)).
 - [ ] `.vscode/extensions.json` con extensiones recomendadas para el stack.
 - [ ] (Recomendado) `.devcontainer/devcontainer.json` con el entorno de desarrollo reproducible (ver [guía Dev Containers](../tooling/devcontainer.md)).
 - [ ] `.env.example` con las variables de entorno requeridas (sin valores reales) si el proyecto usa variables de entorno.
 
-### Calidad de código
+## # Calidad de código
 
 - [ ] Configurar herramienta de lint/formato para el stack:
   - .NET: `global.json` + `dotnet format` configurado (ver [Code Format .NET](../code-format/dotnet.md)).
   - Ruby: `.rubocop.yml` + `RuboCop` en Gemfile.
 - [ ] Verificar que el lint pasa en verde desde el inicio.
 
-### Testing
+## # Testing
 
 - [ ] Proyectos nuevos: stack Microsoft Testing Platform (`xunit.v3` + `coverlet.MTP`,
       `<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>` y
@@ -42,7 +42,7 @@ Completar **antes del primer commit real de funcionalidad**.
 - [ ] El workflow compartido `dotnet.yml` se consume con el input `test_arguments` adecuado al
       runner del proyecto (ver [Testing .NET](../testing/dotnet.md#ci--shared-workflow)).
 
-### CI/CD
+## # CI/CD
 
 - [ ] `.github/workflows/ci.yml` configurado con al menos:
   - Conventional Commits check en PRs.
@@ -54,23 +54,23 @@ Completar **antes del primer commit real de funcionalidad**.
   - Include administrators.
 - [ ] Al menos un test de ejemplo (aunque sea un "hello world") pasando en CI.
 
-### Versionado
+## # Versionado
 
 - [ ] Estrategia de versionado definida (GitVersion para .NET, o manual con tags).
 - [ ] Primer tag de versión creado: `v0.1.0`.
 
-### Seguridad
+## # Seguridad
 
 - [ ] Confirmado que no hay secrets ni credenciales en el código.
 - [ ] Dependabot o Renovate configurado para actualizaciones automáticas.
 - [ ] `.github/renovate.json` o `.github/dependabot.yml` presente.
 
-### Documentación del equipo
+## # Documentación del equipo
 
 - [ ] Dueño del repositorio documentado en `README.md`.
 - [ ] Contacto o equipo responsable identificado.
 
-### Uso de IA (si aplica)
+## # Uso de IA (si aplica)
 
 - [ ] Crear `AGENTS.md` en la raíz con el stub que referencia el criterio de la organización (ver [AGENTS.md](../ai/AGENTS.md)).
 - [ ] Crear `docs/ai/ai-task-log.md` si el repositorio usará agentes IA.
@@ -82,20 +82,20 @@ Completar **antes del primer commit real de funcionalidad**.
 
 Para repositorios que ya tienen historia pero no cumplen todos los estándares.
 
-### Prioridad alta (semana 1)
+## # Prioridad alta (semana 1)
 
 - [ ] CI pipeline básico funcionando (build + test).
 - [ ] Branch protection en `main`.
 - [ ] No hay secrets expuestos en el historial de commits.
 
-### Prioridad media (mes 1)
+## # Prioridad media (mes 1)
 
 - [ ] Conventional Commits activo en nuevos PRs.
 - [ ] Lint/formato verificado en CI.
 - [ ] `README.md` actualizado con descripción y guía básica.
 - [ ] Dependabot o Renovate activado.
 
-### Prioridad baja (trimestre 1)
+## # Prioridad baja (trimestre 1)
 
 - [ ] CHANGELOG creado y actualizado.
 - [ ] Cobertura de tests con reporte en CI.

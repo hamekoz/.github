@@ -102,7 +102,7 @@ Branches are created from `develop` (or `main` for hotfixes) and merged via PR. 
 | Testing `.NET`     | [Testing .NET](../testing/dotnet.md)                        |
 | AI + human review  | [Review policy](../ai/review-policy.md)                     |
 
-### Highlights
+## # Highlights
 
 - **Clean Architecture**: dependencies point inward (Core ← Services ← Data/Delivery). Order
   applies. Endpoints in `Endpoints/`, DI only in `Program.cs`.

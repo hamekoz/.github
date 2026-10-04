@@ -4,7 +4,7 @@ Este directorio es el **hub centralizado** de estándares, convenciones y polít
 
 ## Índice
 
-### Convenciones de desarrollo
+## # Convenciones de desarrollo
 
 | Documento                                                     | Descripción                                 |
 | ------------------------------------------------------------- | ------------------------------------------- |
@@ -12,7 +12,7 @@ Este directorio es el **hub centralizado** de estándares, convenciones y polít
 | [Semantic Versioning](./conventions/semantic-versioning.md)   | Política de versionado semántico y releases |
 | [Branching](./conventions/branching.md)                       | Estrategia de ramas y ambientes             |
 
-### Arquitectura y diseño
+## # Arquitectura y diseño
 
 | Documento                                                  | Descripción                                  |
 | ---------------------------------------------------------- | -------------------------------------------- |
@@ -21,7 +21,7 @@ Este directorio es el **hub centralizado** de estándares, convenciones y polít
 | [Clean Architecture](./architecture/clean-architecture.md) | Organización en capas y dependencias         |
 | [Microservicios](./architecture/microservices.md)          | Principios y límites de servicios            |
 
-### Formato y calidad de código
+## # Formato y calidad de código
 
 | Documento                                       | Descripción                                     |
 | ----------------------------------------------- | ----------------------------------------------- |
@@ -30,13 +30,13 @@ Este directorio es el **hub centralizado** de estándares, convenciones y polít
 | [Ruby on Rails](./code-format/ruby-on-rails.md) | Convenciones específicas Ruby on Rails          |
 | [.editorconfig](./.editorconfig)                | Reglas de formato de la organización            |
 
-### Testing
+## # Testing
 
 | Documento                   | Descripción                                   |
 | --------------------------- | --------------------------------------------- |
 | [.NET](./testing/dotnet.md) | Stack de testing (MTP/VSTest), cobertura y CI |
 
-### CI/CD
+## # CI/CD
 
 | Documento                                 | Descripción                              |
 | ----------------------------------------- | ---------------------------------------- |
@@ -44,7 +44,7 @@ Este directorio es el **hub centralizado** de estándares, convenciones y polít
 | [.NET](./ci-cd/dotnet.md)                 | Workflows reutilizables para .NET        |
 | [Ruby on Rails](./ci-cd/ruby-on-rails.md) | Workflows y pipelines para Ruby on Rails |
 
-### Inteligencia Artificial
+## # Inteligencia Artificial
 
 | Documento                                                   | Descripción                                             |
 | ----------------------------------------------------------- | ------------------------------------------------------- |
@@ -54,14 +54,14 @@ Este directorio es el **hub centralizado** de estándares, convenciones y polít
 | [Plantilla de tarea IA](./ai/task-template.md)              | Estructura estándar para solicitar trabajo a un agente  |
 | [Plantilla de historial IA](./ai/ai-task-log-template.md)   | Formato de registro de tareas realizadas con IA         |
 
-### Herramientas de desarrollo
+## # Herramientas de desarrollo
 
 | Documento                                   | Descripción                                        |
 | ------------------------------------------- | -------------------------------------------------- |
 | [VS Code](./tooling/vscode.md)              | Configuración, settings y extensiones recomendadas |
 | [Dev Containers](./tooling/devcontainer.md) | Entornos de desarrollo reproducibles               |
 
-### Adopción y onboarding
+## # Adopción y onboarding
 
 | Documento                                                     | Descripción                                                 |
 | ------------------------------------------------------------- | ----------------------------------------------------------- |

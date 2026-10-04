@@ -17,17 +17,17 @@ Usar esta plantilla al solicitar trabajo a GitHub Copilot, Claude u otro agente 
 - ¿En qué repositorio/servicio se trabaja?
 - ¿Qué módulo, feature o área se ve afectada?
 - ¿Hay restricciones técnicas o de diseño relevantes?
--->
+- ->
 
-## Tarea solicitada
+##  Tarea solicitada
 
 <!-- Descripción detallada de lo que el agente debe hacer. Ser específico:
 - Qué crear, modificar o eliminar
 - Qué comportamiento debe tener el resultado
 - Qué no debe cambiar
--->
+- ->
 
-## Definición de terminado (DoD)
+##  Definición de terminado (DoD)
 
 <!-- ¿Cómo se verifica que la tarea está completa y correcta? -->
 

@@ -77,7 +77,7 @@ if (shape is Circle { Radius: > 0 } circle)
 public record CreateOrderRequest(Guid CustomerId, List<OrderItem> Items);
 ```
 
-### C# moderno — features preferidas
+## # C# moderno — features preferidas
 
 - **Primary constructors** para clases con mucha DI (C# 12+). Sin backing fields redundantes.
 - **Collection expressions** (`[...]`, `[.. items]`) en lugar de `new List<T> { }`.

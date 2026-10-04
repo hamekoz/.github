@@ -77,10 +77,10 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: myapp_test
         options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+  - -health-cmd pg_isready
+  - -health-interval 10s
+  - -health-timeout 5s
+  - -health-retries 5
         ports:
           - 5432:5432
     env:
@@ -140,7 +140,7 @@ end
 
 ## Seguridad
 
-### Brakeman
+## # Brakeman
 
 Ejecutar en cada PR. Configurar en `.brakeman.ignore` los falsos positivos documentados.
 
@@ -148,7 +148,7 @@ Ejecutar en cada PR. Configurar en `.brakeman.ignore` los falsos positivos docum
 bundle exec brakeman --no-pager
 ```
 
-### bundler-audit
+## # bundler-audit
 
 Verifica que no haya gems con CVEs conocidas.
 

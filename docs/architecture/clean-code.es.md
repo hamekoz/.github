@@ -10,7 +10,7 @@ proyecto de referencia `CartaUniversal`.
 
 ## Nombres
 
-### Obligatorio — Nombres
+## # Obligatorio — Nombres
 
 - Los nombres deben revelar la intención: `GetUserByIdAsync` en lugar de `GetU` o `Process`.
 - Sin abreviaciones crípticas: `customerAccount`, no `ca` ni `custAcc`.
@@ -18,7 +18,7 @@ proyecto de referencia `CartaUniversal`.
 - Los booleanos se nombran como afirmaciones: `isActive`, `hasPermission`, `canDelete`.
 - Las colecciones en plural: `orders`, `activeUsers`.
 
-### Obligatorio — Variables nombradas por contenido, no por tipo
+## # Obligatorio — Variables nombradas por contenido, no por tipo
 
 **Objetivo**: el código se lee como prosa, sin necesidad de ver la asignación.
 
@@ -37,7 +37,7 @@ var activeUsers = users.Where(u => u.IsActive).ToList();
 Sufijos como `Dto`, `Temp`, `List`, `Str` solo aparecen cuando aportan comprensión genuinamente.
 No codificar el detalle de implementación (framework, tecnología, tipo de colección) en el nombre.
 
-### Recomendado — Nombres
+## # Recomendado — Nombres
 
 - Los nombres de clases son sustantivos; los de métodos son verbos.
 
@@ -45,7 +45,7 @@ No codificar el detalle de implementación (framework, tecnología, tipo de cole
 
 ## Funciones / Métodos
 
-### Obligatorio — Funciones
+## # Obligatorio — Funciones
 
 - **Una sola responsabilidad**: cada función hace una sola cosa, y bien.
 - **Pequeñas**: preferiblemente menos de 20 líneas. Si necesita scroll, probablemente hace
@@ -56,11 +56,11 @@ No codificar el detalle de implementación (framework, tecnología, tipo de cole
 - **Máximo 3 parámetros**; más sugiere un objeto de parámetros o refactorizar.
 - **Métodos pequeños con responsabilidades delegadas**: extraer helpers en vez de god functions.
 
-### Recomendado — Funciones
+## # Recomendado — Funciones
 
 - Evitar parámetros booleanos que cambian el comportamiento; preferir dos funciones separadas.
 
-### Obligatorio — Tipos de retorno explícitos
+## # Obligatorio — Tipos de retorno explícitos
 
 Preferir `record`/clases de retorno sobre tuplas cuando el resultado tiene significado de dominio.
 
@@ -68,13 +68,13 @@ Preferir `record`/clases de retorno sobre tuplas cuando el resultado tiene signi
 
 ## Comentarios
 
-### Obligatorio — Comentarios
+## # Obligatorio — Comentarios
 
 - **El código debe explicarse a sí mismo**; los comentarios son un último recurso.
 - No comentar código obsoleto: eliminarlo.
 - No comentar lo obvio: `i++; // incrementa i`.
 
-### Permitido y valioso
+## # Permitido y valioso
 
 - Comentarios de advertencia sobre consecuencias no obvias.
 - Comentarios `TODO` con contexto y responsable: `// TODO(juan): remove after migrating to v2`.
@@ -87,7 +87,7 @@ Preferir `record`/clases de retorno sobre tuplas cuando el resultado tiene signi
 
 Ver [reglas de formato por lenguaje](../code-format/README.md).
 
-### Obligatorio — Formato
+## # Obligatorio — Formato
 
 - Consistencia en todo el archivo y el proyecto.
 - El código relacionado va junto; el no relacionado, separado.
@@ -104,7 +104,7 @@ Ver [reglas de formato por lenguaje](../code-format/README.md).
 | Constantes                     | `UPPER_SNAKE_CASE` | `MAX_STOCK_ITEMS`, `DEFAULT_TIMEZONE` |
 | Métodos async                  | Sufijo `Async`     | `GetOrderAsync`                       |
 
-### Named arguments para intención clara
+## # Named arguments para intención clara
 
 Cuando se llaman métodos con constantes, `null`, o tipos que requieren inferencia, usar
 parámetros nombrados:
@@ -126,7 +126,7 @@ var birthUtc = ToUtc(
 
 ## Manejo de errores
 
-### Obligatorio — Manejo de errores
+## # Obligatorio — Manejo de errores
 
 - **Nunca ignorar excepciones en silencio** (`catch { }` vacío prohibido).
 - Los errores deben contener contexto suficiente; loguear con `ILogger` usando logging
@@ -142,12 +142,12 @@ catch (InvalidOperationException ex)
 }
 ```
 
-### Recomendado — Manejo de errores
+## # Recomendado — Manejo de errores
 
 - Crear tipos de excepción específicos del dominio.
 - Manejar los errores en la capa más apropiada (no atrapar y relanzar sin agregar contexto).
 
-### Structured logging
+## # Structured logging
 
 ```csharp
 // ❌ concatenación de strings — no buscable
@@ -204,7 +204,7 @@ public sealed class StockService(IStockStore store, ILogger<StockService> logger
 
 ## Principios
 
-### SOLID
+## # SOLID
 
 | Principio                     | Resumen                                                                    |
 | ----------------------------- | -------------------------------------------------------------------------- |
@@ -214,7 +214,7 @@ public sealed class StockService(IStockStore store, ILogger<StockService> logger
 | **I** — Interface Segregation | Interfaces pequeñas y específicas; no forzar implementaciones innecesarias |
 | **D** — Dependency Inversion  | Depender de abstracciones, no de implementaciones concretas                |
 
-### DRY, KISS, YAGNI
+## # DRY, KISS, YAGNI
 
 | Principio | Descripción                                                            |
 | --------- | ---------------------------------------------------------------------- |
