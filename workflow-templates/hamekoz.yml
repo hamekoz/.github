@@ -39,3 +39,37 @@ jobs:
     with:
       dockerfile-path: "AnotherProject/Dockerfile"
       docker-image-name: "hamekoz-docker-image-name-another-example"
+
+  publish-nuget-to-github-packages:
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') }}
+    name: Publish NuGet to GitHub Packages
+    uses: hamekoz/.github/.github/workflows/publish-nuget-to-github-packages.yml@main
+    secrets: inherit
+    with:
+      nuget-version: ${{ github.ref_name }}
+
+  publish-nuget-to-nuget-org:
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') }}
+    name: Publish NuGet to NuGet.org
+    uses: hamekoz/.github/.github/workflows/publish-nuget-to-nuget-org.yml@main
+    secrets: inherit
+    with:
+      nuget-version: ${{ github.ref_name }}
+
+  publish-docker-image-to-github-packages:
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') }}
+    name: Publish Docker Image Default Project to GitHub Packages
+    uses: hamekoz/.github/.github/workflows/publish-docker-image-to-github-packages.yml@main
+    secrets: inherit
+    with:
+      dockerfile-path: "DefaultProject/Dockerfile"
+      docker-image-name: "hamekoz-docker-image-name-default-example"
+
+  publish-docker-image-to-dockerhub:
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') }}
+    name: Publish Docker Image Default Project to Docker Hub
+    uses: hamekoz/.github/.github/workflows/publish-docker-image-to-dockerhub.yml@main
+    secrets: inherit
+    with:
+      dockerfile-path: "DefaultProject/Dockerfile"
+      docker-image-name: "hamekoz-docker-image-name-default-example"
