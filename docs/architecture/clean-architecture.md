@@ -67,26 +67,26 @@ The `CartaUniversal` reference maps this as follows:
 
 ## Rules per layer
 
-### Core
+## # Core
 
 - Only pure types: enums, records, value objects, static validation/conversion methods,
   domain exceptions (`InvalidStockOperationException`).
 - No project dependencies, no infrastructure packages.
 
-### Services
+## # Services
 
 - Depends on Core types and repository abstractions.
 - Constructor injection of abstractions; never `new ConcreteRepository()`.
 - Methods are async with `Async` suffix; cancel `CancellationToken` in the whole chain.
 - Explicit exception handling — never swallow exceptions.
 
-### Data
+## # Data
 
 - Implements Service interfaces (`IRepository<T>`).
 - Maps between persistence entities and Core/domain types.
 - No business logic.
 
-### Delivery (Web / API)
+## # Delivery (Web / API)
 
 - Injects services only.
 - Validates input; delegates business rules to Services.

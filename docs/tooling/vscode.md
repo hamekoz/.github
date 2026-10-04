@@ -27,7 +27,7 @@ Incluir este archivo en todos los repositorios para que todos los contribuidores
 }
 ```
 
-### Configuración adicional para .NET
+## # Configuración adicional para .NET
 
 ```json
 {
@@ -41,7 +41,7 @@ Incluir este archivo en todos los repositorios para que todos los contribuidores
 }
 ```
 
-### Configuración adicional para Ruby on Rails
+## # Configuración adicional para Ruby on Rails
 
 ```json
 {
@@ -61,7 +61,7 @@ Incluir este archivo en todos los repositorios para que todos los contribuidores
 
 Incluir este archivo en todos los repositorios. VS Code mostrará un aviso para instalar las extensiones recomendadas al abrir el proyecto.
 
-### Extensiones generales (todos los proyectos)
+## # Extensiones generales (todos los proyectos)
 
 ```json
 {
@@ -82,7 +82,7 @@ Incluir este archivo en todos los repositorios. VS Code mostrará un aviso para 
 }
 ```
 
-### Extensiones para .NET (C#)
+## # Extensiones para .NET (C#)
 
 Agregar a `recommendations`:
 
@@ -104,7 +104,7 @@ Agregar a `recommendations`:
 | `formulahendry.dotnet-test-explorer`      | Explorador de tests para proyectos .NET           |
 | `sonarsource.sonarlint-vscode`            | Análisis estático en tiempo real (SonarLint)      |
 
-### Extensiones para Ruby on Rails
+## # Extensiones para Ruby on Rails
 
 Agregar a `recommendations`:
 
@@ -128,11 +128,11 @@ Agregar a `recommendations`:
 
 ## Detalle de extensiones clave
 
-### EditorConfig (`editorconfig.editorconfig`)
+## # EditorConfig (`editorconfig.editorconfig`)
 
 Aplica automáticamente las reglas del `.editorconfig` al guardar. **Obligatorio** ya que es la fuente de verdad de reglas de formato compartidas.
 
-### CSpell (`streetsidesoftware.code-spell-checker`)
+## # CSpell (`streetsidesoftware.code-spell-checker`)
 
 Revisión ortográfica en el código fuente. Las palabras técnicas del proyecto se agregan a `cspell-project-words.txt`.
 
@@ -145,7 +145,7 @@ Habilitar el diccionario español:
 }
 ```
 
-### GitHub Copilot (`github.copilot` + `github.copilot-chat`)
+## # GitHub Copilot (`github.copilot` + `github.copilot-chat`)
 
 Asistente de IA para autocompletado de código y chat. Requiere licencia de GitHub Copilot activa.
 
@@ -153,15 +153,15 @@ Las instrucciones organizacionales para Copilot están centralizadas en `.github
 
 Ver [instrucciones para agentes IA](../ai/agent-instructions.md) para el contexto completo.
 
-### GitLens (`eamodio.gitlens`)
+## # GitLens (`eamodio.gitlens`)
 
 Anotaciones de blame, historial de archivos y líneas, comparación de ramas. Recomendado para navegar el historial de cambios.
 
-### GitHub Actions (`github.vscode-github-actions`)
+## # GitHub Actions (`github.vscode-github-actions`)
 
 Autocompletado, validación y ejecución de workflows de GitHub Actions directamente desde VS Code.
 
-### Markdownlint (`davidanson.vscode-markdownlint`)
+## # Markdownlint (`davidanson.vscode-markdownlint`)
 
 Verifica que los archivos Markdown cumplan con las reglas definidas en `.markdownlint.json`. Complementa el check automático de CI.
 
@@ -170,7 +170,7 @@ Verifica que los archivos Markdown cumplan con las reglas definidas en `.markdow
 ## Estructura `.vscode/` en cada repositorio
 
 ```text
-.vscode/
+. vscode/
 ├── settings.json      ← Configuración del workspace (comprometer al repo)
 ├── extensions.json    ← Extensiones recomendadas (comprometer al repo)
 └── launch.json        ← Configuración de debug (comprometer al repo si es útil)
@@ -178,7 +178,7 @@ Verifica que los archivos Markdown cumplan con las reglas definidas en `.markdow
 
 > **Nota**: No comprometer `tasks.json` con tareas muy específicas del entorno local. Si se agregan tareas compartidas, documentar su propósito en comentarios.
 
-### Qué comprometer al repo
+## # Qué comprometer al repo
 
 | Archivo                   | ¿Comprometer?  | Motivo                                                       |
 | ------------------------- | -------------- | ------------------------------------------------------------ |

@@ -31,7 +31,7 @@ PR abierto                     Merge a develop/main       Tag v*.*.*
 
 ## Pipeline mínimo por tipo de proyecto
 
-### API / Microservicio
+## # API / Microservicio
 
 | Etapa                | Cuándo          | Descripción                                                |
 | -------------------- | --------------- | ---------------------------------------------------------- |
@@ -45,7 +45,7 @@ PR abierto                     Merge a develop/main       Tag v*.*.*
 | Publish              | Tag             | Publicar en registry (GHCR, Docker Hub, NuGet)             |
 | Deploy               | Tag / push main | Deploy al ambiente correspondiente                         |
 
-### Librería / NuGet Package / Gem
+## # Librería / NuGet Package / Gem
 
 | Etapa                | Cuándo    | Descripción                                   |
 | -------------------- | --------- | --------------------------------------------- |
@@ -56,7 +56,7 @@ PR abierto                     Merge a develop/main       Tag v*.*.*
 | Determine Version    | Push main | Calcular versión semántica (GitVersion)       |
 | Pack + Publish       | Push main | Empaquetar y publicar en registro de paquetes |
 
-### Worker / Background Job
+## # Worker / Background Job
 
 | Etapa                | Cuándo    | Descripción              |
 | -------------------- | --------- | ------------------------ |
@@ -66,7 +66,7 @@ PR abierto                     Merge a develop/main       Tag v*.*.*
 | Package              | Tag       | Imagen Docker            |
 | Publish + Deploy     | Tag       | Publish en GHCR + deploy |
 
-### Frontend / SPA (si aplica)
+## # Frontend / SPA (si aplica)
 
 | Etapa                | Cuándo    | Descripción            |
 | -------------------- | --------- | ---------------------- |

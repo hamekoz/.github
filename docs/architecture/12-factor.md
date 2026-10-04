@@ -128,18 +128,18 @@ Aplicar este checklist durante el diseño y revisión de cualquier servicio. Los
 
 ## Checklist rápido por tipo de proyecto
 
-### API / Microservicio
+## # API / Microservicio
 
 Factores críticos: 3, 5, 6, 8, 9, 11.
 
-### Worker / Background Job
+## # Worker / Background Job
 
 Factores críticos: 3, 6, 9, 12.
 
-### Librería / NuGet Package
+## # Librería / NuGet Package
 
 Factores críticos: 2, 5.
 
-### Frontend / SPA
+## # Frontend / SPA
 
 Factores críticos: 3, 5, 7.

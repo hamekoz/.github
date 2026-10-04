@@ -23,14 +23,14 @@ También es posible usar Dev Containers con GitHub Codespaces, sin necesidad de 
 Todo repositorio que use Dev Containers debe tener:
 
 ```text
-.devcontainer/
+. devcontainer/
 └── devcontainer.json     ← Configuración principal del contenedor
 ```
 
 Opcionalmente:
 
 ```text
-.devcontainer/
+. devcontainer/
 ├── devcontainer.json
 ├── Dockerfile            ← Si se necesita una imagen personalizada
 └── docker-compose.yml    ← Si el entorno requiere múltiples servicios (BD, cache, etc.)
@@ -86,7 +86,7 @@ Ver ejemplo completo en [`devcontainer-examples/dotnet/`](../../devcontainer-exa
 }
 ```
 
-### Con base de datos (docker-compose)
+## # Con base de datos (docker-compose)
 
 Para servicios que requieren PostgreSQL u otros servicios externos:
 

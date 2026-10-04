@@ -41,32 +41,32 @@ Registrar la tarea en el historial de tareas IA del repositorio
 
 ## Criterios de revisión por categoría
 
-### Cambios de lógica de negocio
+## # Cambios de lógica de negocio
 
 - [ ] ¿La lógica implementada es correcta con respecto al requerimiento?
 - [ ] ¿Se manejan los edge cases relevantes?
 - [ ] ¿Hay tests que cubran el comportamiento nuevo?
 - [ ] ¿La implementación es coherente con el diseño existente?
 
-### Cambios de arquitectura
+## # Cambios de arquitectura
 
 - [ ] ¿Se respetan las capas de Clean Architecture?
 - [ ] ¿Las dependencias van en la dirección correcta?
 - [ ] ¿No se introdujeron dependencias circulares?
 
-### Cambios en CI/CD o configuración
+## # Cambios en CI/CD o configuración
 
 - [ ] ¿Se entiende el efecto de cada cambio en el workflow?
 - [ ] ¿No se redujo el nivel de verificación del pipeline?
 - [ ] ¿No se exponen secrets o variables sensibles?
 
-### Cambios en dependencias
+## # Cambios en dependencias
 
 - [ ] ¿La nueva dependencia está justificada?
 - [ ] ¿Se verificó que no tenga CVEs conocidas?
 - [ ] ¿La versión está fijada apropiadamente?
 
-### Seguridad (obligatorio para cualquier cambio)
+## # Seguridad (obligatorio para cualquier cambio)
 
 - [ ] ¿No hay secretos, tokens ni credenciales hardcodeadas?
 - [ ] ¿Se validan todos los inputs externos?

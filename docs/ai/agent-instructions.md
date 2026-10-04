@@ -21,25 +21,25 @@ Todos los repositorios comparten convenciones centralizadas en `hamekoz/.github`
 
 ## Convenciones que el agente debe respetar siempre
 
-### Commits
+## # Commits
 
 - Todo mensaje de commit debe seguir **Conventional Commits**: `<type>(<scope>): <description>`.
 - Tipos válidos: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
 - Sin punto final en el título. Sin mayúscula inicial. Máximo 100 caracteres en el título.
 
-### Branching
+## # Branching
 
 - Las ramas de trabajo generadas por agentes usan los mismos prefijos semánticos que los humanos,
   según el tipo de cambio: `feature/`, `fix/`, `chore/`, `docs/`, `refactor/`, `hotfix/`.
 - No existe un prefijo específico para agentes (ver [Estrategia de branching](../conventions/branching.md)).
 - Nunca hacer push directo a `main` o `develop`.
 
-### Versionado
+## # Versionado
 
 - Seguir Semantic Versioning: `vMAJOR.MINOR.PATCH`.
 - Los breaking changes requieren incremento MAJOR.
 
-### Idioma
+## # Idioma
 
 - El código (nombres de variables, métodos, clases, comentarios de código) se escribe en **inglés**.
 - La documentación (README, docs/, CHANGELOG) puede estar en **español o inglés** según el contexto del repositorio.
@@ -48,7 +48,7 @@ Todos los repositorios comparten convenciones centralizadas en `hamekoz/.github`
 
 ## Reglas de calidad de código
 
-### General
+## # General
 
 - Seguir los principios de **Clean Code** y **SOLID**.
 - Funciones pequeñas, con una sola responsabilidad.
@@ -57,14 +57,14 @@ Todos los repositorios comparten convenciones centralizadas en `hamekoz/.github`
 - No introducir dependencias nuevas sin justificación explícita.
 - No modificar archivos no relacionados con el objetivo de la tarea.
 
-### .NET (C#)
+## # .NET (C#)
 
 - Seguir las [convenciones .NET](../code-format/dotnet.md).
 - `dotnet format --verify-no-changes` debe pasar sin errores.
 - Usar inyección de dependencias por constructor.
 - Los métodos async llevan el sufijo `Async`.
 
-### Ruby on Rails
+## # Ruby on Rails
 
 - Seguir las [convenciones Ruby on Rails](../code-format/ruby-on-rails.md).
 - `bundle exec rubocop` debe pasar sin errores.

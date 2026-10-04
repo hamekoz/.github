@@ -1,0 +1,84 @@
+name: Publish NuGet to GitHub Packages
+
+on:
+  workflow_call:
+    inputs:
+      runner:
+        description: "El runner donde se ejecutará el trabajo (ej. ubuntu-latest o self-hosted)"
+        required: false
+        default: "ubuntu-latest"
+        type: string
+      nuget-version:
+        description: "Versión del NuGet a publicar (default: auto-detect con GitVersion)"
+        required: false
+        default: ""
+        type: string
+
+env:
+  HAMEKOZ_GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  publish-nuget-to-github-packages:
+    name: Publish NuGet to GitHub Packages
+    runs-on: ${{ inputs.runner }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: "global.json"
+
+      - name: Install GitVersion
+        if: ${{ inputs.nuget-version == '' }}
+        uses: gittools/actions/gitversion/setup@v1.2.0
+        with:
+          versionSpec: "5.x"
+
+      - name: Determine Version
+        if: ${{ inputs.nuget-version == '' }}
+        id: version
+        uses: gittools/actions/gitversion/execute@v1.2.0
+
+      - name: Set Version Output
+        id: version-output
+        run: |
+          if [ -z "${{ inputs.nuget-version }}" ]; then
+            echo "nuget-version=${{ steps.version.outputs.nuGetVersion }}" >> $GITHUB_OUTPUT
+          else
+            echo "nuget-version=${{ inputs.nuget-version }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+
+      - name: Pack nuget
+        run: |
+          dotnet pack \
+            --output ./nugets \
+            --configuration Release \
+            -p:Version=${{ steps.version-output.outputs.nuget-version }}
+
+      - name: Check if generates nugets packages
+        id: has-nugets
+        uses: andstor/file-existence-action@v3
+        with:
+          files: "./nugets/*.nupkg"
+
+      - name: Upload artifact
+        if: steps.has-nugets.outputs.files_exists == 'true'
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: nugets-github-packages
+          path: ./nugets/*.nupkg
+
+      - name: Publish to GitHub Packages
+        if: steps.has-nugets.outputs.files_exists == 'true'
+        run: |
+          dotnet nuget push ./nugets/*.nupkg \
+            --skip-duplicate \
+            --api-key ${{ secrets.GITHUB_TOKEN }} \
+            --source 'https://nuget.pkg.github.com/${{ github.REPOSITORY_OWNER }}/index.json'

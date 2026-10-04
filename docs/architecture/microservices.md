@@ -18,7 +18,7 @@ Este documento define las reglas y heurísticas para el diseño y operación de 
 
 ## Contratos de API
 
-### Reglas obligatorias
+## # Reglas obligatorias
 
 - Las APIs son **versionadas desde el primer release**: `/v1/resource`.
 - Los cambios en la API siguen Semantic Versioning: breaking changes → nueva versión mayor.
@@ -36,7 +36,7 @@ Este documento define las reglas y heurísticas para el diseño y operación de 
 }
 ```
 
-### Compatibilidad hacia atrás
+## # Compatibilidad hacia atrás
 
 - Nunca eliminar ni renombrar campos de respuesta existentes en la misma versión.
 - Los campos nuevos en respuestas son aditivos y no rompen clientes existentes.
@@ -47,13 +47,13 @@ Este documento define las reglas y heurísticas para el diseño y operación de 
 
 ## Comunicación entre servicios
 
-### Síncrona (HTTP/gRPC)
+## # Síncrona (HTTP/gRPC)
 
 - Usar para operaciones que requieren respuesta inmediata.
 - Implementar **circuit breaker** y **retry con backoff exponencial**.
 - Documentar explícitamente las dependencias síncronas (riesgo de cascada de fallos).
 
-### Asíncrona (mensajería / eventos)
+## # Asíncrona (mensajería / eventos)
 
 - Preferir comunicación por eventos para operaciones que no requieren respuesta inmediata.
 - Los eventos deben ser inmutables y tener un contrato de schema versionado.
@@ -74,7 +74,7 @@ Este documento define las reglas y heurísticas para el diseño y operación de 
 
 ## Observabilidad
 
-### Obligatorio
+## # Obligatorio
 
 - **Logs estructurados** (JSON) con los campos mínimos:
   - `timestamp`, `level`, `service`, `traceId`, `message`
@@ -85,7 +85,7 @@ Este documento define las reglas y heurísticas para el diseño y operación de 
   - Readiness: ¿puede atender tráfico? (valida conexión a BD y deps críticos)
 - **Trace ID propagado** en todos los requests inter-servicio (header `X-Trace-Id` o `traceparent` W3C).
 
-### Recomendado
+## # Recomendado
 
 - Dashboard centralizado con indicadores clave por servicio.
 - Alertas automáticas en base a métricas (tasa de error > umbral, latencia elevada).

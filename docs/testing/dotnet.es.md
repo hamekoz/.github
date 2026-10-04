@@ -4,25 +4,25 @@ Define el criterio de testing compartido para todos los proyectos .NET de la org
 a proyectos nuevos y a proyectos existentes que se estén migrando a los estándares actuales.
 
 ```text
-+------------------------------------------------------------------+
++ ------------------------------------------------------------------+
 | Estándar (obligatorio)                               | Ejemplo    |
-+------------------------------------------------------------------+
++ ------------------------------------------------------------------+
 | Framework de tests           | xUnit (no MSTest, no NUnit)       |
 | Runner (nuevo /.NET 10)      | Microsoft Testing Platform (MTP)  |
 | Runner (legacy)              | VSTest (transitorio, ver abajo)   |
 | Test doubles                 | Clases Fake*/Stub* escritas a mano|
 | Driver de cobertura          | coverlet.MTP (MTP) / collector    |
-+------------------------------------------------------------------+
++ ------------------------------------------------------------------+
 ```
 
 ---
 
 ## Modelo de runner
 
-### Proyectos nuevos (.NET 10): Microsoft Testing Platform (MTP)
+## # Proyectos nuevos (.NET 10): Microsoft Testing Platform (MTP)
 
 MTP es el runner estándar para todos los proyectos de test nuevos y para los que apuntan a
-.NET 10. Los proyectos de test son aplicaciones de consola (`OutputType = Exe`) ejecutadas por
+. NET 10. Los proyectos de test son aplicaciones de consola (`OutputType = Exe`) ejecutadas por
 `dotnet test`.
 
 - Paquetes: `xunit.v3` + `coverlet.MTP`.
@@ -31,7 +31,7 @@ MTP es el runner estándar para todos los proyectos de test nuevos y para los qu
 
 Implementación de referencia: los tests de `Hamekoz.NET.Sdk.Internal`.
 
-### Proyectos legacy: VSTest (transitorio)
+## # Proyectos legacy: VSTest (transitorio)
 
 Los proyectos que siguen en el runner VSTest (por ejemplo `CartaUniversal.Tests`) continúan
 funcionando tal cual y se consideran transitorios. No se migran como parte de este criterio; la
@@ -44,7 +44,7 @@ migración ocurre solo cuando el proyecto se toca por otros motivos.
 
 ## Setup del proyecto de test
 
-### Central Package Management (`Directory.Packages.props`)
+## # Central Package Management (`Directory.Packages.props`)
 
 ```xml
 <PropertyGroup>
@@ -63,7 +63,7 @@ migración ocurre solo cuando el proyecto se toca por otros motivos.
 </ItemGroup>
 ```
 
-### `global.json`
+## # `global.json`
 
 ```json
 {
@@ -77,7 +77,7 @@ migración ocurre solo cuando el proyecto se toca por otros motivos.
 }
 ```
 
-### `<ProjectName>.csproj` del proyecto de test (MTP)
+## # `<ProjectName>.csproj` del proyecto de test (MTP)
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -108,7 +108,7 @@ migración ocurre solo cuando el proyecto se toca por otros motivos.
 `UseMicrosoftTestingPlatformRunner=true` registra la extensión de `coverlet.MTP`. Sin él, la
 aplicación de test no reconoce la opción `--coverlet`.
 
-### `<ProjectName>.csproj` del proyecto de test (VSTest, legacy)
+## # `<ProjectName>.csproj` del proyecto de test (VSTest, legacy)
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -136,7 +136,7 @@ aplicación de test no reconoce la opción `--coverlet`.
 
 ## Comandos
 
-### Local — runner MTP
+## # Local — runner MTP
 
 ```sh
 # Todos los tests
@@ -144,9 +144,9 @@ dotnet test --project tests/MyPackage.Tests
 
 # Tests con cobertura (cobertura + json)
 dotnet test --project tests/MyPackage.Tests \
-  --coverlet \
-  --coverlet-output-format cobertura \
-  --coverlet-output-format json
+  - -coverlet \
+  - -coverlet-output-format cobertura \
+  - -coverlet-output-format json
 ```
 
 Notas:
@@ -156,13 +156,13 @@ Notas:
 - Coverlet escribe en el directorio `TestResults` del output del proyecto de test
   (`bin/<Config>/net10.0/TestResults/`): `coverage.cobertura.<timestamp>.xml` y `coverage.<timestamp>.json`.
 
-### Local — runner VSTest
+## # Local — runner VSTest
 
 ```sh
 dotnet test --collect:"XPlat Code Coverage"
 ```
 
-### CI — workflow compartido (`hamekoz/.github/.github/workflows/dotnet.yml`)
+## # CI — workflow compartido (`hamekoz/.github/.github/workflows/dotnet.yml`)
 
 El workflow ejecuta `dotnet test --no-build --configuration Release ${{ inputs.test_arguments }}`.
 
@@ -177,9 +177,9 @@ jobs:
     secrets: inherit
     with:
       test_arguments: >-
-        --coverlet
-        --coverlet-output-format cobertura
-        --coverlet-output-format json
+  - -coverlet
+  - -coverlet-output-format cobertura
+  - -coverlet-output-format json
 ```
 
 El workflow sube el reporte de cobertura a Codecov después del paso de test. Codecov auto-detecta
@@ -189,28 +189,28 @@ El workflow sube el reporte de cobertura a Codecov después del paso de test. Co
 
 ## Convenciones de test
 
-### Disposición de archivos
+## # Disposición de archivos
 
 - `tests/<ProjectName>.Tests/` espeja la estructura de la fuente.
 - Los archivos de test van planos en la raíz del proyecto de test: un archivo `XServiceTests.cs`
   por clase probada.
 - Los doubles escritos a mano viven junto a los tests: `FakeRepository.cs`, `FakeEmailSender.cs`.
 
-### Naming
+## # Naming
 
 - Clases de test: `<ClassName>Tests` (p.ej. `StockServiceTests`).
 - Métodos de test: `Method_Condition_Outcome` (p.ej. `GetById_WhenIdDoesNotExist_ReturnsNull`) o
   `Should_<Outcome>_When_<Condition>`.
 - Los nombres describen el escenario en inglés simple; nada de `Test1`, `Test2`.
 
-### Estructura
+## # Estructura
 
 - Seguir **Arrange / Act / Assert** (AAA) con una línea en blanco entre secciones.
 - Un concepto por test (`[Fact]` para un camino simple, `[Theory]` + `[InlineData]` para
   data-driven).
 - Los tests son **F.I.R.S.T.**: fast, independent, repeatable, self-validating, timely.
 
-### Test doubles
+## # Test doubles
 
 - Preferir clases `Fake*`/`Stub*` escritas a mano sobre frameworks de mocking. Mantienen los tests
   explícitos y son triviales para los seams de repositorios/servicios.
@@ -218,14 +218,14 @@ El workflow sube el reporte de cobertura a Codecov después del paso de test. Co
   porciones de comportamiento de producción; justificarlo en el PR.
 - Los doubles deben implementar la misma interfaz y nunca embeder datos mágicos de test.
 
-### Determinismo
+## # Determinismo
 
 - Nunca depender de `DateTime.Now`, timezones del entorno, valores aleatorios o estado estático
   compartido.
 - Inyectar `TimeProvider` (o una interfaz de reloj) y usar `ITestOutputHelper` para diagnóstico.
 - Cada test crea sus propias instancias; no reutilizar fixtures mutables entre tests.
 
-### Umbrales de cobertura
+## # Umbrales de cobertura
 
 La cobertura es una compuerta de calidad, no un objetivo absoluto. Mínimos sugeridos por módulo:
 

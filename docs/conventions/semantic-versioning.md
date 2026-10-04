@@ -10,7 +10,7 @@ v<MAJOR>.<MINOR>.<PATCH>
 
 Ejemplo: `v2.4.1`
 
-### Reglas de incremento
+## # Reglas de incremento
 
 | Segmento | Cuándo incrementar                                             |
 | -------- | -------------------------------------------------------------- |

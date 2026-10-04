@@ -67,26 +67,26 @@ La referencia `CartaUniversal` mapea esto así:
 
 ## Reglas por capa
 
-### Core
+## # Core
 
 - Solo tipos puros: enums, records, value objects, métodos estáticos de validación/conversión,
   excepciones de dominio (`InvalidStockOperationException`).
 - Sin dependencias de proyecto, sin paquetes de infraestructura.
 
-### Services
+## # Services
 
 - Depende de tipos de Core y de abstracciones de repositorio.
 - Inyección por constructor de abstracciones; nunca `new ConcreteRepository()`.
 - Métodos async con sufijo `Async`; propagar `CancellationToken` en toda la cadena.
 - Manejo de errores explícito — nunca tragarse excepciones.
 
-### Data
+## # Data
 
 - Implementa interfaces de Services (`IRepository<T>`).
 - Mapea entre entidades de persistencia y tipos de Core/dominio.
 - Sin lógica de negocio.
 
-### Delivery (Web / API)
+## # Delivery (Web / API)
 
 - Inyecta solo servicios.
 - Valida entrada; delega las reglas de negocio a Services.

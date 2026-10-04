@@ -9,7 +9,7 @@ The C#-specific examples reflect the practices promoted by the `CartaUniversal` 
 
 ## Names
 
-### Required — Names
+## # Required — Names
 
 - Names must reveal intent: `GetUserByIdAsync` instead of `GetU` or `Process`.
 - No cryptic abbreviations: `customerAccount`, not `ca` or `custAcc`.
@@ -17,7 +17,7 @@ The C#-specific examples reflect the practices promoted by the `CartaUniversal` 
 - Booleans are named as statements: `isActive`, `hasPermission`, `canDelete`.
 - Collections are plural: `orders`, `activeUsers`.
 
-### Required — Variables named by content, not by type
+## # Required — Variables named by content, not by type
 
 **Goal**: code reads like prose without inspecting the assignment.
 
@@ -36,7 +36,7 @@ var activeUsers = users.Where(u => u.IsActive).ToList();
 Suffixes like `Dto`, `Temp`, `List`, `Str` only appear when they genuinely aid comprehension.
 Do not encode the implementation detail (framework, technology, collection kind) into the name.
 
-### Recommended — Names
+## # Recommended — Names
 
 - Class names are nouns; method names are verbs.
 
@@ -44,7 +44,7 @@ Do not encode the implementation detail (framework, technology, collection kind)
 
 ## Functions / Methods
 
-### Required — Functions
+## # Required — Functions
 
 - **Single responsibility**: one function does one thing, well.
 - **Small**: preferably under 20 lines. If it needs scrolling, it probably does too much.
@@ -53,11 +53,11 @@ Do not encode the implementation detail (framework, technology, collection kind)
 - **Max 3 parameters**; more suggests a parameter object or a refactor.
 - **Small methods with delegated responsibilities**: extract helpers instead of god functions.
 
-### Recommended — Functions
+## # Recommended — Functions
 
 - Avoid boolean parameters that change behavior; prefer two separate functions.
 
-### Required — Explicit return types over overloaded inference
+## # Required — Explicit return types over overloaded inference
 
 Prefer `record`/class return types over tuples when the result has domain meaning.
 
@@ -65,13 +65,13 @@ Prefer `record`/class return types over tuples when the result has domain meanin
 
 ## Comments
 
-### Required — Comments
+## # Required — Comments
 
 - **Code must explain itself**; comments are a last resort.
 - Do not comment out obsolete code — delete it.
 - Do not comment the obvious: `i++; // increment i`.
 
-### Allowed and valuable
+## # Allowed and valuable
 
 - Warning comments about non-obvious consequences.
 - `TODO` comments with context and owner: `// TODO(juan): remove after migrating to v2`.
@@ -84,7 +84,7 @@ Prefer `record`/class return types over tuples when the result has domain meanin
 
 See [per-language format rules](../code-format/README.md).
 
-### Required — Format
+## # Required — Format
 
 - Consistency across file and project.
 - Related code together; unrelated code separated.
@@ -101,7 +101,7 @@ See [per-language format rules](../code-format/README.md).
 | Constants                      | `UPPER_SNAKE_CASE` | `MAX_STOCK_ITEMS`, `DEFAULT_TIMEZONE` |
 | Async methods                  | `Async` suffix     | `GetOrderAsync`                       |
 
-### Named arguments for clear intent
+## # Named arguments for clear intent
 
 When calling methods with constants, `null`, or types that need inference, use named parameters:
 
@@ -122,7 +122,7 @@ var birthUtc = ToUtc(
 
 ## Error handling
 
-### Required — Error handling
+## # Required — Error handling
 
 - **Never ignore exceptions silently** (`catch { }` empty is forbidden).
 - Errors must carry enough context to diagnose; log with `ILogger` using structured logging
@@ -138,12 +138,12 @@ catch (InvalidOperationException ex)
 }
 ```
 
-### Recommended — Error handling
+## # Recommended — Error handling
 
 - Create domain-specific exception types.
 - Handle errors at the most appropriate layer (do not catch-and-rethrow without adding context).
 
-### Structured logging
+## # Structured logging
 
 ```csharp
 // ❌ string concatenation — not searchable
@@ -200,7 +200,7 @@ public sealed class StockService(IStockStore store, ILogger<StockService> logger
 
 ## Principles
 
-### SOLID
+## # SOLID
 
 | Principle                     | Summary                                               |
 | ----------------------------- | ----------------------------------------------------- |
@@ -210,7 +210,7 @@ public sealed class StockService(IStockStore store, ILogger<StockService> logger
 | **I** — Interface Segregation | Small, specific interfaces; no forced implementations |
 | **D** — Dependency Inversion  | Depend on abstractions, not concretions               |
 
-### DRY, KISS, YAGNI
+## # DRY, KISS, YAGNI
 
 | Principle | Description                                                |
 | --------- | ---------------------------------------------------------- |

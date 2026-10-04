@@ -25,7 +25,6 @@ jobs:
     runs-on: ${{ inputs.runner }}
     env:
       HAMEKOZ_GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      Hamekoz_GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4

@@ -41,32 +41,32 @@ Log the task in the repository AI task log
 
 ## Review criteria by category
 
-### Business logic changes
+## # Business logic changes
 
 - [ ] Is the implemented logic correct with respect to the requirement?
 - [ ] Are the relevant edge cases handled?
 - [ ] Are there tests covering the new behavior?
 - [ ] Is the implementation consistent with the existing design?
 
-### Architecture changes
+## # Architecture changes
 
 - [ ] Are the Clean Architecture layers respected?
 - [ ] Do dependencies point in the correct direction?
 - [ ] Were no circular dependencies introduced?
 
-### CI/CD or configuration changes
+## # CI/CD or configuration changes
 
 - [ ] Is the effect of each workflow change understood?
 - [ ] Was the level of verification of the pipeline not reduced?
 - [ ] Are no secrets or sensitive variables exposed?
 
-### Dependency changes
+## # Dependency changes
 
 - [ ] Is the new dependency justified?
 - [ ] Was it verified it has no known CVEs?
 - [ ] Is the version appropriately pinned?
 
-### Security (mandatory for any change)
+## # Security (mandatory for any change)
 
 - [ ] No secrets, tokens, or credentials hardcoded?
 - [ ] Are all external inputs validated?
