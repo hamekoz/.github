@@ -22,18 +22,70 @@ Toda la documentación de estándares y convenciones está en el directorio [`do
 
 Los workflows de GitHub Actions compartidos están en [`.github/workflows/`](./.github/workflows/):
 
+### Workflows de validación y calidad
+
 | Workflow                             | Descripción                                    |
 | ------------------------------------ | ---------------------------------------------- |
 | `conventions.yml`                    | Conventional Commits + verificación de formato |
 | `conventional-commits.yml`           | Lint de commits con gitlint                    |
 | `code-format-verification.yml`       | ShellCheck + Prettier                          |
 | `dotnet.yml`                         | CI .NET: format, build, test, coverage         |
-| `continuous-delivery-nuget.yml`      | CD: publicar paquetes NuGet                    |
-| `continuous-delivery-dockerfile.yml` | CD: publicar imágenes Docker                   |
+
+### Workflows de publicación de NuGet
+
+| Workflow                                      | Descripción                                              |
+| --------------------------------------------- | -------------------------------------------------------- |
+| `continuous-delivery-nuget.yml` (coordinador) | Orquesta publicación en ambos destinos                   |
+| `publish-nuget-to-github-packages.yml`        | Publica en GitHub Packages (nuget.pkg.github.com)        |
+| `publish-nuget-to-nuget-org.yml`              | Publica en NuGet.org (api.nuget.org)                     |
+
+**Características**:
+- Workflows independientes invocables por separado
+- Input opcional `nuget-version` para especificar versión manual
+- Sin input, determina versión automáticamente con GitVersion
+- Retrocompatible con flujos existentes
+
+### Workflows de publicación de Docker
+
+| Workflow                                          | Descripción                                  |
+| ------------------------------------------------- | -------------------------------------------- |
+| `continuous-delivery-dockerfile.yml` (coordinador)| Orquesta publicación en ambos destinos       |
+| `publish-docker-image-to-github-packages.yml`    | Publica en GitHub Container Registry (ghcr.io)|
+| `publish-docker-image-to-dockerhub.yml`          | Publica en Docker Hub (docker.io)            |
+
+**Características**:
+- Workflows independientes invocables por separado
+- Soporta múltiples proyectos con configuración de paths
 
 ## Instrucciones para Copilot
 
 Las instrucciones para GitHub Copilot válidas para toda la organización están en [`.github/copilot-instructions.md`](./.github/copilot-instructions.md).
+
+## Workflow template
+
+El template de workflow [`workflow-templates/hamekoz.yml`](./workflow-templates/hamekoz.yml) automatiza completamente el CI/CD en repositorios:
+
+- ✅ Validación de commits y formato en PRs
+- ✅ CI/CD en push a ramas (main, uat, stg)
+- ✅ Publicación automática de NuGet en tags semver
+- ✅ Publicación automática de Docker en tags semver
+- ✅ Jobs de ejemplo para múltiples proyectos
+
+**Activación**: Crear `github/workflows/hamekoz.yml` en tu repositorio con:
+```yaml
+name: Hamekoz
+on:
+  pull_request:
+    branches: [$default-branch]
+  push:
+    branches: [$default-branch, "uat", "stg"]
+    tags:
+      - v*.*.*
+
+jobs:
+  hamekoz:
+    uses: hamekoz/.github/.github/workflows/hamekoz.yml@main
+```
 
 ## Perfil de la organización
 

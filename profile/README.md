@@ -12,6 +12,7 @@ Todos los proyectos de la organización siguen los estándares definidos en el r
 | [Clean Architecture](https://github.com/hamekoz/.github/blob/main/docs/architecture/clean-architecture.md)    | Organización Domain → Application → Infrastructure → API     |
 | [12 Factor App](https://github.com/hamekoz/.github/blob/main/docs/architecture/12-factor.md)                  | Checklist por tipo de servicio                               |
 | [CI/CD](https://github.com/hamekoz/.github/blob/main/docs/ci-cd/README.md)                                    | Pipelines mínimos obligatorios por tipo de proyecto          |
+| [Workflows](https://github.com/hamekoz/.github/tree/main/.github/workflows)                                  | Workflows reutilizables de GitHub Actions                  |
 
 ## Requisitos mínimos para proyectos nuevos
 
@@ -47,3 +48,15 @@ Para usar paquetes NuGet de la organización:
 - Generar un [GitHub personal access token](https://github.com/settings/tokens/new) con permiso `read:packages`.
 - Usar la variable de entorno `Hamekoz_GITHUB_PACKAGES_TOKEN` con el token generado.
 - Adaptar el [`nuget.config`](https://github.com/hamekoz/.github/blob/main/dotnet-examples/nuget.config) de ejemplo al repositorio.
+
+## Publicación automática de artefactos en tags
+
+El workflow template `hamekoz.yml` publica automáticamente en GitHub cuando se crea un tag semver (`v1.2.3`):
+
+### NuGet packages
+- GitHub Packages (privado, acceso mediante token)
+- NuGet.org (público)
+
+### Docker images
+- GitHub Container Registry (privado, acceso mediante token)
+- Docker Hub (público, si credenciales configuradas)
