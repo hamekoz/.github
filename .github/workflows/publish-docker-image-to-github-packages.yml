@@ -1,4 +1,4 @@
-name: Continuous Delivery
+name: Publish Docker Image to GitHub Packages
 
 on:
   workflow_call:
@@ -22,33 +22,38 @@ env:
   HAMEKOZ_GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  docker-hub:
-    name: Docker image to Docker Hub
+  publish-docker-image-to-github-packages:
+    name: Publish Docker Image to GitHub Packages
     runs-on: ${{ inputs.runner }}
+    permissions:
+      contents: read
+      packages: write
     env:
-      REGISTRY: docker.io
-      IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.docker-image-name }}
+      REGISTRY: ghcr.io
+      IMAGE_NAME: ${{ github.repository_owner }}/${{ inputs.docker-image-name }}
     steps:
-      - name: Check out the repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Log in to Docker Hub
+      - name: Log in to the Container registry
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=semver,pattern={{raw}}
             type=semver,pattern=v{{version}}
             type=semver,pattern=v{{major}}.{{minor}}
             type=semver,pattern=v{{major}}
             type=ref,event=branch
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
