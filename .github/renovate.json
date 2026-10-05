@@ -1,18 +1,64 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "dependencyDashboard": true,
   "extends": [
     "config:recommended",
     ":semanticCommits",
-    ":combinePatchMinorReleases",
-    ":enableVulnerabilityAlerts"
+    ":semanticCommitTypeAll(chore)",
+    ":automergeMinor",
+    ":automergePatch",
+    "group:allNonMajor"
   ],
+  "assigneesFromCodeOwners": true,
+  "reviewersFromCodeOwners": true,
+  "labels": ["dependencies", "chore"],
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 10,
+  "schedule": ["before 9am on monday"],
+  "rangeStrategy": "bump",
   "packageRules": [
     {
-      "description": "Automerge non-major updates",
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": "!/^0/",
+      "matchPackagePatterns": ["^@types/"],
+      "groupName": "types"
+    },
+    {
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "3 days"
+    },
+    {
+      "matchManagers": ["nuget"],
+      "minimumReleaseAge": "3 days",
+      "groupName": "nuget non-major"
+    },
+    {
+      "matchDepTypes": ["action"],
+      "groupName": "github actions",
+      "pinDigests": true,
       "automerge": true
+    },
+    {
+      "matchPackageNames": ["cspell", "markdownlint-cli2", "prettier", "@cspell/dict-es-es"],
+      "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "labels": ["dependencies", "major"]
+    },
+    {
+      "matchCategories": ["security"],
+      "labels": ["security", "dependencies"],
+      "prPriority": 10
     }
-  ]
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["security", "dependencies"],
+    "automerge": false
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": ["before 9am on monday"]
+  },
+  "ignorePaths": ["node_modules/", "bin/", "obj/", "coverage/", "dist/", "build/"]
 }

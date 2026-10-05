@@ -1,4 +1,11 @@
-name: Continuous Delivery
+name: Continuous Delivery NuGet
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 on:
   workflow_call:

@@ -132,3 +132,12 @@ jobs:
 Todos los repositorios deben tener Renovate o Dependabot configurado para mantener dependencias actualizadas automáticamente.
 
 Configuración de Renovate en este repositorio: [`.github/renovate.json`](../../.github/renovate.json).
+
+## Seguridad y hardening
+
+Los workflows reutilizables aplican **mínimos privilegios** (`permissions:`), **concurrency** para cancelar ejecuciones redundantes, y **timeouts** por job para evitar ejecuciones colgadas. Esto mantiene compatibilidad hacia atrás y mejora la postura de seguridad (supply chain hardening).
+
+Recomendaciones para consumidores:
+- Usar tags versionados para workflows reutilizables en producción (ej. `@v1`) en lugar de `@main` para fijar estabilidad
+- Revisar los secrets requeridos en la sección anterior según destinos de publicación
+- Habilitar protección de ramas y requerir checks obligatorios en PRs

@@ -1,4 +1,12 @@
-name: Continuous Integration
+name: .NET
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 on:
   workflow_call:
@@ -23,6 +31,7 @@ jobs:
   format-build-test:
     name: .NET format, build and test
     runs-on: ${{ inputs.runner }}
+    timeout-minutes: 20
     env:
       HAMEKOZ_GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:

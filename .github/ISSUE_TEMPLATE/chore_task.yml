@@ -1,0 +1,42 @@
+name: Chore / Maintenance Task
+description: Track maintenance, refactoring, tooling, or dependency updates
+title: "chore: [short description]"
+labels: ["chore"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for maintenance work that doesn't add features or fix bugs.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be done and why?
+      placeholder: Update dependencies to address...
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Files/modules affected and out of scope
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: Conditions for completion
+      placeholder: |
+        - [ ] CI passes
+        - [ ] No functional changes
+        - [ ] Documentation updated if needed
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: Change is non-functional or maintenance only
+          required: true
+        - label: No breaking changes introduced
+          required: true
+        - label: Verified locally (lint/build/tests as applicable)
+          required: true

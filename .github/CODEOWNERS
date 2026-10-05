@@ -1,0 +1,28 @@
+# CODEOWNERS - Hamekoz Organization
+# Ownership rules for this central .github repository
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global owners
+* @Hamekoz/core-maintainers
+
+# Workflows and CI/CD
+/.github/workflows/ @Hamekoz/devops
+/workflow-templates/ @Hamekoz/devops
+
+# Documentation
+/docs/ @Hamekoz/documentation
+
+# Configuration and tooling
+/.editorconfig @Hamekoz/core-maintainers
+/.git* @Hamekoz/core-maintainers
+/.prettier* @Hamekoz/core-maintainers
+/.markdownlint* @Hamekoz/core-maintainers
+/cspell* @Hamekoz/core-maintainers
+/package.json @Hamekoz/core-maintainers
+/package-lock.json @Hamekoz/core-maintainers
+/yarn.lock @Hamekoz/core-maintainers
+/.github/copilot-instructions.md @Hamekoz/ai
+/docs/ai/ @Hamekoz/ai
+
+# Profile
+/profile/ @Hamekoz/core-maintainers

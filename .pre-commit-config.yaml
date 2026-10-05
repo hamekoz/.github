@@ -1,0 +1,107 @@
+# Pre-commit hooks for local development
+# See https://pre-commit.com/ for installation and usage
+# Install: pip install pre-commit && pre-commit install
+
+repos:
+  - repo: local
+    hooks:
+      - id: conventional-commits
+        name: conventional commits (gitlint)
+        entry: gitlint
+        language: system
+        stages: [commit-msg]
+        pass_filenames: false
+        description: Enforce Conventional Commits via gitlint
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: |
+          (?x)^(
+            node_modules/.*|
+            \.git/.*|
+            .*\.png|
+            .*\.jpg|
+            .*\.jpeg|
+            .*\.gif|
+            .*\.ico|
+            .*\.pdf
+          )$
+      - id: end-of-file-fixer
+        exclude: |
+          (?x)^(
+            node_modules/.*|
+            \.git/.*|
+            .*\.png|
+            .*\.jpg|
+            .*\.jpeg|
+            .*\.gif|
+            .*\.ico|
+            .*\.pdf
+          )$
+      - id: check-yaml
+        args: ["--allow-multiple-documents"]
+      - id: check-json
+      - id: check-added-large-files
+      - id: mixed-line-ending
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.3.3
+    hooks:
+      - id: prettier
+        exclude: |
+          (?x)^(
+            node_modules/.*|
+            \.git/.*|
+            dist/.*|
+            build/.*|
+            bin/.*|
+            obj/.*|
+            coverage/.*
+          )$
+
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.13.0
+    hooks:
+      - id: markdownlint-cli2
+        files: \.md$
+        exclude: |
+          (?x)^(
+            node_modules/.*|
+            \.git/.*|
+            CHANGELOG\.md|
+            coverage/.*
+          )$
+        args: ["--fix"]
+
+  - repo: local
+    hooks:
+      - id: cspell
+        name: cspell
+        entry: npx --yes cspell
+        language: system
+        types: [text]
+        args: ["--no-progress", "--no-must-find-files"]
+        exclude: |
+          (?x)^(
+            node_modules/.*|
+            \.git/.*|
+            package-lock\.json|
+            yarn\.lock|
+            .*\.lock
+          )$
+        pass_filenames: true
+        require_serial: true
+
+  # dotnet format hook (optional; skip if dotnet not installed in environment)
+  - repo: local
+    hooks:
+      - id: dotnet-format
+        name: dotnet format
+        entry: bash -c 'if command -v dotnet >/dev/null 2>&1; then dotnet format --verify-no-changes --verbosity minimal 2>/dev/null || dotnet format --verbosity minimal; else echo "dotnet not found, skipping dotnet format"; fi'
+        language: system
+        types: [c#]
+        pass_filenames: false
+        require_serial: true
+        verbose: false

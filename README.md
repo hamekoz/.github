@@ -94,3 +94,11 @@ jobs:
 
 Editar [`profile/README.md`](./profile/README.md) para actualizar el [perfil público de Hamekoz](https://github.com/Hamekoz/).
 Ver detalles en [GitHub Documentation](https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/customizing-your-organizations-profile#organization-profile-readmes).
+
+## Templates and Governance
+
+- **CODEOWNERS**: `.github/CODEOWNERS` — ownership rules for automated review assignment
+- **Issue Templates**: `.github/ISSUE_TEMPLATE/` — bug, feature, and chore templates
+- **PR Template**: `.github/PULL_REQUEST_TEMPLATE.md` — enforces Conventional Commits and checklist
+- **Security Policy**: `SECURITY.md` — private vulnerability reporting via GitHub Security Advisories
+- **Pre-commit**: `.pre-commit-config.yaml` — local quality checks (conventional commits, format, markdown, spell)

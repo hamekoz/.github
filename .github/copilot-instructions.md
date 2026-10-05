@@ -94,3 +94,10 @@ Before generating code:
 6. Update the repository AI task log (if present).
 
 When in doubt or when impact is high, ask before acting.
+
+## Repository governance and templates
+
+- CODEOWNERS, issue/PR templates, and SECURITY.md are provided at `.github/` level
+- Reusable workflows include least-privilege permissions, concurrency, and timeouts
+- Renovate is configured with security alerts and pinning rules for actions
+- Pre-commit hooks are available via `.pre-commit-config.yaml`
