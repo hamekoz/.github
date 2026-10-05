@@ -155,3 +155,9 @@ Argentina-specific concepts into explicit value objects with clear names.
 
 _This file is owned by the Hamekoz organization. Update it when the organization criterion
 changes; per-repository `AGENTS.md` files remain lightweight pointers._
+
+### Repository tooling
+
+- Pre-commit hooks: `.pre-commit-config.yaml` (Conventional Commits via gitlint, format, markdownlint, cspell; `dotnet format` opcional)
+- Renovate: `.github/renovate.json` con alertas de seguridad, pin de actions y automerges controlados
+- Governance: CODEOWNERS, plantillas de issues/PR y SECURITY.md disponibles en `.github/`

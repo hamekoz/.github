@@ -1,5 +1,12 @@
 name: Code Format Verification
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   workflow_call:
     inputs:
@@ -13,6 +20,7 @@ jobs:
   shellcheck:
     name: Shell
     runs-on: ${{ inputs.runner }}
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - name: Run ShellCheck

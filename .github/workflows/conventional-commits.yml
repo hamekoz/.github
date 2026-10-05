@@ -1,5 +1,12 @@
 name: Conventional Commits
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   workflow_call:
     inputs:
@@ -13,6 +20,7 @@ jobs:
   conventional-commits:
     name: Conventional Commits
     runs-on: ${{ inputs.runner }}
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:

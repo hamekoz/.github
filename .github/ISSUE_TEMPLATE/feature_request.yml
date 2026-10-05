@@ -1,0 +1,60 @@
+name: Feature Request
+description: Suggest a new feature or enhancement
+title: "feat: [short description]"
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please describe the feature you'd like to see. Keep it focused and actionable.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What problem are you trying to solve?
+      placeholder: The current behavior doesn't allow...
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How should this be solved?
+      placeholder: Add support for...
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any alternative approaches you've considered
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: Clear, testable criteria for completion
+      placeholder: |
+        - [ ] When X, then Y
+        - [ ] API returns Z
+        - [ ] Tests cover edge cases
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Impact
+      options:
+        - low
+        - medium
+        - high
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: This aligns with existing architecture/conventions
+          required: true
+        - label: I have considered backward compatibility
+          required: true
+        - label: This is not a duplicate of an existing feature request
+          required: true
